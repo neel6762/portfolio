@@ -1,0 +1,85 @@
+{
+  "general": {
+    "siteName": "Neel Patel",
+    "jobTitle": "Data Scientist",
+    "tagline": "with a Creative Edge"
+  },
+  "navigation": {
+    "links": [
+      { "name": "Home", "path": "/" },
+      { "name": "About", "path": "/about" },
+      { "name": "Projects", "path": "/projects" }
+    ]
+  },
+  "social": {
+    "github": "https://github.com/neel6762",
+    "linkedin": "https://www.linkedin.com/in/neel6762/",
+    "twitter": "https://x.com/neel6762",
+    "email": "patelneel504@gmail.com"
+  },
+  "home": {
+    "hero": {
+      "greeting": "Hi, I'm",
+      "heading": "a Data Scientist with a Creative Edge",
+      "description": "Transforming complex data into beautiful, insightful visualizations and powerful machine learning solutions."
+    },
+    "intro": {
+      "heading": "Innovative Thinker",
+      "description1": "I'm passionate about finding the sweet spot where analytical thinking meets creative problem-solving. With expertise in machine learning, data visualization, and a keen eye for design, I transform complex datasets into meaningful insights and beautiful experiences.",
+      "description2": "Whether it's building predictive models, creating interactive dashboards, or developing data-driven applications, I bring both technical precision and artistic flair to every project."
+    }
+  },
+  "about": {
+    "heading": "About Me",
+    "description": "Get to know more about my journey, skills, and experiences.",
+    "sections": [
+      {
+        "title": "My Journey",
+        "content": "I started my career with a deep curiosity about how data can reveal patterns and insights that drive business decisions. Over the years, I've worked with various organizations to implement data-driven solutions that make a real impact."
+      },
+      {
+        "title": "My Approach",
+        "content": "I believe in combining analytical rigor with creative thinking. Every dataset tells a story, and I'm passionate about finding innovative ways to extract and communicate those stories visually and effectively."
+      }
+    ],
+    "personalNote": "When I'm not coding or creating visualizations, you'll find me hiking, experimenting with digital art, or exploring new coffee shops in the city.",
+    "professionalJourney": {
+      "title": "Professional Journey",
+      "timeline": [
+        {
+          "year": "2022",
+          "title": "Senior Data Scientist",
+          "company": "Tech Innovators Inc.",
+          "description": "Leading data science initiatives and mentoring junior team members."
+        },
+        {
+          "year": "2020",
+          "title": "Data Scientist",
+          "company": "Data Insights Co.",
+          "description": "Developed machine learning models for customer segmentation and predictive analytics."
+        },
+        {
+          "year": "2018",
+          "title": "Data Analyst",
+          "company": "Analytics First",
+          "description": "Created interactive dashboards and performed statistical analysis on business data."
+        },
+        {
+          "year": "2017",
+          "title": "MSc in Data Science",
+          "company": "University of Data",
+          "description": "Graduated with honors, specializing in machine learning and visualization."
+        }
+      ]
+    }
+  },
+  "projects": {
+    "heading": "My Projects",
+    "description": "Explore my portfolio of projects showcasing my skills and experience in web development, mobile apps, and design."
+  },
+  "footer": {
+    "copyright": "© 2025 Neel Patel",
+    "tagline": "Made with ♥ using ",
+    "cursorLink": "https://cursor.sh"
+  }
+} 
