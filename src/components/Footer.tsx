@@ -59,24 +59,24 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-dark-bg text-white py-6">
+    <footer className="py-8 backdrop-blur-md border-t border-primary/10 bg-gradient-to-b from-transparent to-dark-bg/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <div className="flex items-center space-x-2">
-            <span className="font-heading text-xl text-primary">{siteText.general.siteName}</span>
-            <span className="text-gray-400 text-sm">|</span>
-            <span className="text-gray-400 text-sm">{siteText.general.jobTitle}</span>
+        <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+          <div className="flex items-center space-x-3">
+            <span className="font-heading text-xl neon-text">{siteText.general.siteName}</span>
+            <span className="text-primary/50 text-sm">|</span>
+            <span className="text-dark-text text-sm">{siteText.general.jobTitle}</span>
           </div>
 
-          <div className="flex space-x-6">
+          <div className="flex space-x-8">
             {socialLinks.map((social) => (
               <motion.a
                 key={social.name}
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-300 hover:text-primary transition-colors duration-300"
-                whileHover={{ scale: 1.2 }}
+                className="text-dark-text hover:text-primary transition-colors duration-300"
+                whileHover={{ scale: 1.2, y: -3 }}
                 whileTap={{ scale: 0.9 }}
                 aria-label={social.name}
               >
@@ -85,20 +85,23 @@ const Footer = () => {
             ))}
           </div>
 
-          <div className="text-gray-400 text-sm flex flex-col items-center md:items-end">
+          <div className="text-dark-text/80 text-sm flex flex-col items-center md:items-end">
             <div>{siteText.footer.copyright}</div>
-            <div className="mt-1 text-xs flex items-center">
-              {siteText.footer.tagline.split('♥')[0]} <span className="text-red-500 mx-1">♥</span> {siteText.footer.tagline.split('♥')[1]} 
-              <a 
+            <div className="mt-2 text-xs flex items-center">
+              Build with <a 
                 href={siteText.footer.cursorLink}
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="ml-1 text-primary hover:underline"
+                className="ml-1 text-primary hover:text-secondary transition-colors duration-300"
               >
                 Cursor AI
               </a>
             </div>
           </div>
+        </div>
+        
+        <div className="mt-8 pt-6 border-t border-dark-border/30 flex justify-center">
+          <div className="h-px w-1/2 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
         </div>
       </div>
     </footer>
