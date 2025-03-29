@@ -1,13 +1,12 @@
 {
   "general": {
     "siteName": "Neel Patel",
-    "jobTitle": "Data Scientist",
-    "tagline": "with a Creative Edge"
+    "jobTitle": "Data Scientist"
   },
   "navigation": {
     "links": [
       { "name": "Home", "path": "/" },
-      { "name": "About", "path": "/about" },
+      { "name": "About Me", "path": "/about" },
       { "name": "Projects", "path": "/projects" }
     ]
   },
@@ -20,66 +19,50 @@
   "home": {
     "hero": {
       "greeting": "Hi, I'm",
-      "heading": "a Data Scientist with a Creative Edge",
-      "description": "Transforming complex data into beautiful, insightful visualizations and powerful machine learning solutions."
+      "heading": "a Data Scientist! ",
+      "description": "Transforming business problems using AI solutions"
     },
     "intro": {
-      "heading": "Innovative Thinker",
-      "description1": "I'm passionate about finding the sweet spot where analytical thinking meets creative problem-solving. With expertise in machine learning, data visualization, and a keen eye for design, I transform complex datasets into meaningful insights and beautiful experiences.",
-      "description2": "Whether it's building predictive models, creating interactive dashboards, or developing data-driven applications, I bring both technical precision and artistic flair to every project."
+      "heading": "Innovative Problem Solver",
+      "description1": "I thrive at the intersection of analytical thinking and cutting-edge technology, transforming complex datasets into actionable insights. With expertise in machine learning, deep learning, and graph analytics, I develop intelligent systems that uncover hidden patterns and drive data-informed decision-making.",
+      "description2": "Whether it's building local LLM-based solutions, designing entity resolution pipelines, or leveraging graph databases for anomaly detection, I bring a unique blend of technical rigor and strategic thinking to every project."
     }
   },
   "about": {
     "heading": "About Me",
     "description": "Get to know more about my journey, skills, and experiences.",
-    "sections": [
-      {
-        "title": "My Journey",
-        "content": "I started my career with a deep curiosity about how data can reveal patterns and insights that drive business decisions. Over the years, I've worked with various organizations to implement data-driven solutions that make a real impact."
-      },
-      {
-        "title": "My Approach",
-        "content": "I believe in combining analytical rigor with creative thinking. Every dataset tells a story, and I'm passionate about finding innovative ways to extract and communicate those stories visually and effectively."
-      }
-    ],
-    "personalNote": "When I'm not coding or creating visualizations, you'll find me hiking, experimenting with digital art, or exploring new coffee shops in the city.",
+    "sections": [],
     "professionalJourney": {
-      "title": "Professional Journey",
+      "title": "",
       "timeline": [
         {
-          "year": "2022",
+          "year": "November(2023) - Current",
           "title": "Senior Data Scientist",
-          "company": "Tech Innovators Inc.",
-          "description": "Leading data science initiatives and mentoring junior team members."
+          "company": "Canada Revenue Agency",
+          "description": "Leveraged machine learning, NLP, and graph analytics to develop AI-driven audit tools, optimize data integrity, and enhance fraud detection."
         },
         {
-          "year": "2020",
+          "year": "May (2023) - November(2023)",
           "title": "Data Scientist",
-          "company": "Data Insights Co.",
-          "description": "Developed machine learning models for customer segmentation and predictive analytics."
+          "company": "Canada Revenue Agency",
+          "description": "Developed and applied machine learning modeling, and performed social network analysis to identify non-compliance in tax data."
         },
         {
-          "year": "2018",
-          "title": "Data Analyst",
-          "company": "Analytics First",
-          "description": "Created interactive dashboards and performed statistical analysis on business data."
-        },
-        {
-          "year": "2017",
-          "title": "MSc in Data Science",
-          "company": "University of Data",
-          "description": "Graduated with honors, specializing in machine learning and visualization."
+          "year": "March (2021) - May (2023)",
+          "title": "MSc in Computer Science",
+          "company": "University of Ottawa",
+          "description": "Focused on machine learning and deep learning, developing expertise in AI research and data-driven problem-solving."
         }
       ]
     }
   },
   "projects": {
     "heading": "My Projects",
-    "description": "Explore my portfolio of projects showcasing my skills and experience in web development, mobile apps, and design."
+    "description": "Explore my portfolio of projects showcasing my skills in AI, and graph analytics."
   },
   "footer": {
     "copyright": "© 2025 Neel Patel",
-    "tagline": "Made with ♥ using ",
+    "tagline": "Build with ",
     "cursorLink": "https://cursor.sh"
   }
 } 
