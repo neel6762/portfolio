@@ -34,19 +34,17 @@ export default function Home() {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-10 lg:gap-20">
             {/* Image Container */}
             <motion.div 
-              className="md:w-5/12 flex justify-center md:justify-end order-2 md:order-1"
+              className="md:w-5/12 flex justify-center md:justify-end order-1 md:order-1 mb-8 md:mb-0 pt-24 md:pt-0"
               initial={{ opacity: 0, x: -30 }}
               animate={heroInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8 }}
             >
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
-                {/* Profile image placeholder - replace src with your actual image */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/40 via-secondary/40 to-accent/40 blur-lg animate-pulse-slow"></div>
                 <div className="relative w-full h-full rounded-full border-2 border-primary/50 overflow-hidden">
-                  {/* Using a placeholder image service */}
                   <Image 
-                    src="https://picsum.photos/600/600" 
-                    alt="Profile placeholder"
+                    src="/images/profile.jpg" 
+                    alt="Neel Patel - Profile Photo"
                     fill
                     style={{ objectFit: 'cover' }}
                     className="rounded-full"
@@ -58,7 +56,7 @@ export default function Home() {
             
             {/* Text Content */}
             <motion.div 
-              className="md:w-7/12 text-center md:text-left order-1 md:order-2"
+              className="md:w-7/12 text-center md:text-left order-2 md:order-2"
               initial={{ opacity: 0, y: 20 }}
               animate={heroInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8 }}
