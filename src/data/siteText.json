@@ -1,8 +1,7 @@
 {
   "general": {
     "siteName": "Neel Patel",
-    "jobTitle": "Data Scientist",
-    "tagline": "with a Creative Edge"
+    "jobTitle": "Data Scientist"
   },
   "navigation": {
     "links": [
@@ -20,8 +19,8 @@
   "home": {
     "hero": {
       "greeting": "Hi, I'm",
-      "heading": "a Data Scientist with a Creative Edge",
-      "description": "Transforming complex business problems using AI solutions"
+      "heading": "a Data Scientist! ",
+      "description": "Transforming business problems using AI solutions"
     },
     "intro": {
       "heading": "Innovative Problem Solver",
