@@ -3,7 +3,12 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import ToastProvider from '@/providers/ToastProvider'
 
-const inter = Inter({ subsets: ['latin'] })
+// Load Inter font
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'Neel Patel Portfolio',
@@ -16,8 +21,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className}`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} scroll-smooth`}>
+      <body className={`${inter.className} bg-light dark:bg-dark-bg text-dark dark:text-dark-text transition-colors duration-300`}>
         {children}
         <ToastProvider />
       </body>

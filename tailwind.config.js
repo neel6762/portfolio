@@ -8,23 +8,23 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#00FFFF', // Neon Blue
-        secondary: '#A020F0', // Electric Purple
-        accent: '#00FF7F', // Cyber Green
-        light: '#EDEDED', // Cool White
-        dark: '#0D0D0D', // Deep Blue/Almost Black
+        primary: '#4F46E5', // Indigo
+        secondary: '#4F46E5', // Indigo secondary
+        accent: '#10B981', // Emerald
+        light: '#F9FAFB', // Light background
+        dark: '#111827', // Dark background
         
-        // Dark mode colors (now with futuristic theme)
-        'dark-bg': '#000000', // Jet Black
-        'dark-card': '#111111', // Slightly lighter black
-        'dark-border': '#1A1A1A', // Dark border
-        'dark-text': '#D1D1D1', // Light Gray
-        'dark-text-secondary': '#999999', // Medium Gray
-        'dark-input': '#181818', // Slightly lighter than bg
+        // Dark mode colors
+        'dark-bg': '#111827', // Dark mode background
+        'dark-card': '#1F2937', // Card background in dark mode
+        'dark-border': '#374151', // Dark border
+        'dark-text': '#F9FAFB', // Light text for dark mode
+        'dark-text-secondary': '#D1D5DB', // Secondary text for dark mode
+        'dark-input': '#1F2937', // Input background for dark mode
       },
       fontFamily: {
-        heading: ['Caveat', 'cursive'],
-        subheading: ['Patrick Hand', 'cursive'],
+        heading: ['Inter', 'sans-serif'],
+        subheading: ['Inter', 'sans-serif'],
         body: ['Inter', 'sans-serif'],
       },
       animation: {
@@ -45,14 +45,17 @@ module.exports = {
           '50%': { transform: 'rotate(1deg)' },
         },
         glow: {
-          '0%': { textShadow: '0 0 5px rgba(0, 255, 255, 0.5), 0 0 10px rgba(0, 255, 255, 0.3)' },
-          '100%': { textShadow: '0 0 10px rgba(0, 255, 255, 0.8), 0 0 20px rgba(0, 255, 255, 0.5), 0 0 30px rgba(0, 255, 255, 0.3)' },
+          '0%': { boxShadow: '0 0 5px rgba(79, 70, 229, 0.5), 0 0 10px rgba(79, 70, 229, 0.3)' },
+          '100%': { boxShadow: '0 0 10px rgba(79, 70, 229, 0.8), 0 0 20px rgba(79, 70, 229, 0.5), 0 0 30px rgba(79, 70, 229, 0.3)' },
         },
       },
       boxShadow: {
-        'neon-blue': '0 0 5px #00FFFF, 0 0 10px #00FFFF',
-        'neon-purple': '0 0 5px #A020F0, 0 0 10px #A020F0',
-        'neon-green': '0 0 5px #00FF7F, 0 0 10px #00FF7F',
+        'neumorphic-light': '9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.8)',
+        'neumorphic-dark': '9px 9px 16px rgba(0, 0, 0, 0.4), -9px -9px 16px rgba(75, 85, 99, 0.3)',
+        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.2)',
+      },
+      backdropBlur: {
+        'glass': '8px',
       },
     },
   },
