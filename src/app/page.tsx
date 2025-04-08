@@ -59,7 +59,7 @@ export default function Home() {
   };
   
   return (
-    <main className="min-h-screen bg-light dark:bg-dark-bg text-dark dark:text-dark-text">
+    <main className="min-h-screen bg-light text-dark">
       <Navbar />
 
       {/* Hero Section */}
@@ -84,7 +84,7 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 shadow-neumorphic-light dark:shadow-neumorphic-dark"></div>
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 shadow-neumorphic-light"></div>
                 <div className="relative w-full h-full rounded-full border-2 border-primary/20 overflow-hidden">
                   <Image 
                     src="/images/profile.jpg" 
@@ -133,7 +133,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="text-dark dark:text-dark-text hover:text-primary transition-colors duration-300"
+                  className="text-dark hover:text-primary transition-colors duration-300"
                   aria-label="GitHub"
                 >
                   <svg
@@ -154,7 +154,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="text-dark dark:text-dark-text hover:text-primary transition-colors duration-300"
+                  className="text-dark hover:text-primary transition-colors duration-300"
                   aria-label="LinkedIn"
                 >
                   <svg
@@ -175,7 +175,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="text-dark dark:text-dark-text hover:text-primary transition-colors duration-300"
+                  className="text-dark hover:text-primary transition-colors duration-300"
                   aria-label="Twitter"
                 >
                   <svg
@@ -194,7 +194,7 @@ export default function Home() {
                   href={`mailto:${siteText.social.email}`}
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="text-dark dark:text-dark-text hover:text-primary transition-colors duration-300"
+                  className="text-dark hover:text-primary transition-colors duration-300"
                   aria-label="Email"
                 >
                   <svg
@@ -299,7 +299,7 @@ export default function Home() {
       <section
         id="projects"
         ref={projectsRef}
-        className="relative py-20 md:py-32 bg-gray-50/50 dark:bg-dark-card/20"
+        className="relative py-20 md:py-32 bg-gray-50/50"
       >
         <div className="absolute inset-0 z-0">
           <div className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full bg-primary/5 blur-[80px]"></div>
@@ -330,7 +330,7 @@ export default function Home() {
               <motion.div
                 key={project.id}
                 variants={item}
-                className="bg-white dark:bg-dark-card rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-dark-border"
+                className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100"
               >
                 <div className="h-48 overflow-hidden relative">
                   <Image
@@ -372,7 +372,7 @@ export default function Home() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 bg-gray-100 dark:bg-dark-border text-dark dark:text-dark-text opacity-80 text-xs rounded-full"
+                        className="px-3 py-1 bg-gray-100 text-dark opacity-80 text-xs rounded-full"
                       >
                         {tag}
                       </span>

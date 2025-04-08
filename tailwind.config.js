@@ -12,15 +12,7 @@ module.exports = {
         secondary: '#4F46E5', // Indigo secondary
         accent: '#10B981', // Emerald
         light: '#F9FAFB', // Light background
-        dark: '#111827', // Dark background
-        
-        // Dark mode colors
-        'dark-bg': '#111827', // Dark mode background
-        'dark-card': '#1F2937', // Card background in dark mode
-        'dark-border': '#374151', // Dark border
-        'dark-text': '#F9FAFB', // Light text for dark mode
-        'dark-text-secondary': '#D1D5DB', // Secondary text for dark mode
-        'dark-input': '#1F2937', // Input background for dark mode
+        dark: '#111827', // Dark text
       },
       fontFamily: {
         heading: ['Inter', 'sans-serif'],
@@ -51,7 +43,6 @@ module.exports = {
       },
       boxShadow: {
         'neumorphic-light': '9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.8)',
-        'neumorphic-dark': '9px 9px 16px rgba(0, 0, 0, 0.4), -9px -9px 16px rgba(75, 85, 99, 0.3)',
         'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.2)',
       },
       backdropBlur: {

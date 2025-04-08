@@ -62,7 +62,7 @@ const Navbar = () => {
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-light/80 dark:bg-dark-bg/80 backdrop-blur-md shadow-md py-3'
+          ? 'bg-light/80 backdrop-blur-md shadow-md py-3'
           : 'bg-transparent py-5'
       }`}
     >
@@ -84,7 +84,7 @@ const Navbar = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-10">
+          <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link, index) => (
               <motion.div
                 key={link.name}
@@ -95,7 +95,7 @@ const Navbar = () => {
                 <button
                   onClick={() => scrollToSection(link.id)}
                   className={`font-subheading text-lg transition-colors duration-300 relative group ${
-                    activeSection === link.id ? 'text-primary font-medium' : 'text-dark dark:text-dark-text'
+                    activeSection === link.id ? 'text-primary font-medium' : 'text-dark'
                   }`}
                 >
                   {link.name}
@@ -111,7 +111,7 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-dark dark:text-dark-text focus:outline-none hover:text-primary transition-colors duration-300"
+              className="text-dark focus:outline-none hover:text-primary transition-colors duration-300"
               aria-label="Toggle menu"
             >
               <svg
@@ -148,7 +148,7 @@ const Navbar = () => {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
-          className="md:hidden bg-light/95 dark:bg-dark-bg/95 backdrop-blur-md shadow-lg"
+          className="md:hidden bg-light/95 backdrop-blur-md shadow-lg"
         >
           <div className="px-6 py-6 space-y-5">
             {navLinks.map((link, index) => (
@@ -161,7 +161,7 @@ const Navbar = () => {
                 <button
                   onClick={() => scrollToSection(link.id)}
                   className={`block font-subheading text-xl transition-colors duration-300 ${
-                    activeSection === link.id ? 'text-primary font-medium' : 'text-dark dark:text-dark-text'
+                    activeSection === link.id ? 'text-primary font-medium' : 'text-dark'
                   }`}
                 >
                   <span className="relative">

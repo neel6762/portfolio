@@ -1,6 +1,7 @@
 import '@/styles/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { ThemeProvider } from '@/components/ThemeProvider'
 import ToastProvider from '@/providers/ToastProvider'
 
 // Load Inter font
@@ -22,9 +23,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} scroll-smooth`}>
-      <body className={`${inter.className} bg-light dark:bg-dark-bg text-dark dark:text-dark-text transition-colors duration-300`}>
-        {children}
-        <ToastProvider />
+      <body className={`${inter.className} bg-light text-dark transition-colors duration-300`}>
+        <ThemeProvider>
+          {children}
+          <ToastProvider />
+        </ThemeProvider>
       </body>
     </html>
   )
