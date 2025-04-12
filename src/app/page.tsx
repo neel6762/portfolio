@@ -262,32 +262,63 @@ export default function Home() {
             </p>
           </motion.div>
           
-          {/* Timeline Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={aboutInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="max-w-4xl mx-auto relative">
-              <div className="space-y-6">
-                {siteText.about.professionalJourney.timeline.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    className="relative pl-10 border-l-2 border-[#444851] pb-8 last:pb-0"
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={aboutInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    <div className="absolute left-[-10px] top-0 w-5 h-5 rounded-full bg-[#00D9FF] shadow-md shadow-[#00D9FF]/20"></div>
-                    <div className="font-subheading text-[#FF6EC7] font-medium text-lg leading-tight">{item.year}</div>
-                    <div className="font-bold text-2xl leading-tight mt-1 mb-1">{item.title}</div>
-                    <div className="text-[#00D9FF] font-medium leading-tight mb-2">{item.company}</div>
-                    <div className="opacity-90 text-base leading-relaxed mt-1">{item.description}</div>
-                  </motion.div>
-                ))}
+          {/* Two Column Layout */}
+          <div className="flex flex-col lg:flex-row gap-12">
+            {/* Column 1: Timeline Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={aboutInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+              className="lg:w-1/2"
+            >
+              <div className="max-w-4xl mx-auto relative">
+                <div className="space-y-6">
+                  {siteText.about.professionalJourney.timeline.map((item, index) => (
+                    <motion.div
+                      key={index}
+                      className="relative pl-10 border-l-2 border-[#444851] pb-8 last:pb-0"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={aboutInView ? { opacity: 1, x: 0 } : {}}
+                      transition={{ duration: 0.5, delay: index * 0.1 }}
+                    >
+                      <div className="absolute left-[-10px] top-0 w-5 h-5 rounded-full bg-[#00D9FF] shadow-md shadow-[#00D9FF]/20"></div>
+                      <div className="font-subheading text-[#FF6EC7] font-medium text-lg leading-tight">{item.year}</div>
+                      <div className="font-bold text-2xl leading-tight mt-1 mb-1">{item.title}</div>
+                      <div className="text-[#00D9FF] font-medium leading-tight mb-2">{item.company}</div>
+                      <div className="opacity-90 text-base leading-relaxed mt-1">{item.description}</div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+
+            {/* Column 2: Additional Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={aboutInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="lg:w-1/2"
+            >
+              <div className="bg-[#232631] rounded-lg p-6 mb-6">
+                <h3 className="text-2xl font-bold text-[#00D9FF] mb-4 font-heading">{siteText.about.skills.heading}</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {siteText.about.skills.categories.map((category, index) => (
+                    <div key={index}>
+                      <h4 className="text-[#FF6EC7] font-medium mb-2 font-subheading">{category.name}</h4>
+                      <ul className="space-y-2">
+                        {category.items.map((item, itemIndex) => (
+                          <li key={itemIndex} className="flex items-center">
+                            <span className="mr-2">⚡</span> {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+            </motion.div>
+          </div>
         </div>
       </section>
       
