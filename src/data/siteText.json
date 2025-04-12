@@ -5,9 +5,10 @@
   },
   "navigation": {
     "links": [
-      { "name": "Home", "path": "/" },
-      { "name": "About Me", "path": "/about" },
-      { "name": "Projects", "path": "/projects" }
+      { "name": "Home", "id": "home" },
+      { "name": "About Me", "id": "about" },
+      { "name": "Projects", "id": "projects" },
+      { "name": "Contact", "id": "contact" }
     ]
   },
   "social": {
@@ -52,6 +53,44 @@
           "title": "MSc in Computer Science",
           "company": "University of Ottawa",
           "description": "Focused on machine learning and deep learning, developing expertise in AI research and data-driven problem-solving."
+        }
+      ]
+    },
+    "skills": {
+      "heading": "Skills",
+      "categories": [
+        {
+          "name": "Programming",
+          "items": ["Python", "Cypher", "SQL", "Shell Scripting"]
+        },
+        {
+          "name": "Data Science",
+          "items": ["Machine Learning", "Deep Learning", "NLP", "Data Visualization"]
+        },
+        {
+          "name": "Tools & Frameworks",
+          "items": ["PyTorch", "scikit-learn", "Pandas"]
+        },
+        {
+          "name": "Databases",
+          "items": ["PostgreSQL", "MySQL", "Neo4j"]
+        }
+      ]
+    },
+    "education": {
+      "heading": "Education",
+      "degrees": [
+        {
+          "period": "2019 - 2021",
+          "degree": "MSc in Computer Science",
+          "institution": "University of Ottawa",
+          "description": "Specialized in Machine Learning and AI"
+        },
+        {
+          "period": "2015 - 2019",
+          "degree": "BSc in Mathematics",
+          "institution": "University of Waterloo",
+          "description": "Focus on Applied Mathematics and Statistics"
         }
       ]
     }

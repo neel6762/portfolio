@@ -8,6 +8,7 @@ import siteText from '@/data/siteText.json';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,19 +17,52 @@ const Navbar = () => {
       } else {
         setIsScrolled(false);
       }
+
+      // Update active section based on scroll position
+      const sections = ['home', 'about', 'projects', 'contact'];
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = siteText.navigation.links;
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop - 80,
+        behavior: 'smooth',
+      });
+      setActiveSection(sectionId);
+    }
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+    }
+  };
+
+  // Modify navigation links for SPA style
+  const navLinks = [
+    { name: 'Home', id: 'home' },
+    { name: 'About Me', id: 'about' },
+    { name: 'Projects', id: 'projects' },
+    { name: 'Contact', id: 'contact' }
+  ];
 
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-dark-bg/30 backdrop-blur-md border-b border-primary/20 py-3'
+          ? 'bg-dark/80 backdrop-blur-md shadow-md py-3'
           : 'bg-transparent py-5'
       }`}
     >
@@ -39,15 +73,18 @@ const Navbar = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <Link href="/" className="flex items-center">
-              <span className="font-heading text-2xl font-bold neon-text">
+            <button 
+              onClick={() => scrollToSection('home')}
+              className="flex items-center cursor-pointer"
+            >
+              <span className="font-heading text-2xl font-bold text-primary">
                 {siteText.general.siteName}
               </span>
-            </Link>
+            </button>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-10">
+          <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link, index) => (
               <motion.div
                 key={link.name}
@@ -55,13 +92,17 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Link
-                  href={link.path}
-                  className="font-subheading text-lg hover:text-primary transition-colors duration-300 relative group text-dark-text"
+                <button
+                  onClick={() => scrollToSection(link.id)}
+                  className={`font-subheading text-lg transition-colors duration-300 relative group ${
+                    activeSection === link.id ? 'text-primary font-medium' : 'text-dark-text'
+                  }`}
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary via-secondary to-primary transition-all duration-300 group-hover:w-full opacity-70 group-hover:opacity-100"></span>
-                </Link>
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                    activeSection === link.id ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}></span>
+                </button>
               </motion.div>
             ))}
           </div>
@@ -71,6 +112,7 @@ const Navbar = () => {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="text-dark-text focus:outline-none hover:text-primary transition-colors duration-300"
+              aria-label="Toggle menu"
             >
               <svg
                 className="w-6 h-6"
@@ -106,7 +148,7 @@ const Navbar = () => {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
-          className="md:hidden bg-dark-bg/95 backdrop-blur-md border-b border-primary/20 shadow-lg"
+          className="md:hidden bg-dark/95 backdrop-blur-md shadow-lg"
         >
           <div className="px-6 py-6 space-y-5">
             {navLinks.map((link, index) => (
@@ -116,16 +158,19 @@ const Navbar = () => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
               >
-                <Link
-                  href={link.path}
-                  className="block font-subheading text-xl hover:text-primary transition-colors duration-300 text-dark-text"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                <button
+                  onClick={() => scrollToSection(link.id)}
+                  className={`block font-subheading text-xl transition-colors duration-300 ${
+                    activeSection === link.id ? 'text-primary font-medium' : 'text-dark-text'
+                  }`}
                 >
-                  <span className="relative group">
+                  <span className="relative">
                     {link.name}
-                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300 group-hover:w-full"></span>
+                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
+                      activeSection === link.id ? 'w-full' : 'w-0'
+                    }`}></span>
                   </span>
-                </Link>
+                </button>
               </motion.div>
             ))}
           </div>
