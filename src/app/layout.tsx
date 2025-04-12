@@ -2,7 +2,6 @@ import '@/styles/globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from '@/components/ThemeProvider'
-import ToastProvider from '@/providers/ToastProvider'
 
 // Load Inter font
 const inter = Inter({ 
@@ -22,11 +21,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} scroll-smooth`}>
-      <body className={`${inter.className} bg-light text-dark transition-colors duration-300`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} scroll-smooth dark`}>
+      <body className={`${inter.className} transition-colors duration-300 bg-dark text-dark-text`}>
         <ThemeProvider>
           {children}
-          <ToastProvider />
         </ThemeProvider>
       </body>
     </html>

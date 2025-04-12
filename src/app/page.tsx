@@ -59,7 +59,7 @@ export default function Home() {
   };
   
   return (
-    <main className="min-h-screen bg-light text-dark">
+    <main className="min-h-screen">
       <Navbar />
 
       {/* Hero Section */}
@@ -84,8 +84,8 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 shadow-neumorphic-light"></div>
-                <div className="relative w-full h-full rounded-full border-2 border-primary/20 overflow-hidden">
+                <div className="absolute inset-0 rounded-full"></div>
+                <div className="relative w-full h-full rounded-full overflow-hidden">
                   <Image 
                     src="/images/profile.jpg" 
                     alt="Neel Patel - Profile Photo"
@@ -133,7 +133,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="text-dark hover:text-primary transition-colors duration-300"
+                  className="text-white hover:text-primary transition-colors duration-300"
                   aria-label="GitHub"
                 >
                   <svg
@@ -154,7 +154,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="text-dark hover:text-primary transition-colors duration-300"
+                  className="text-white hover:text-primary transition-colors duration-300"
                   aria-label="LinkedIn"
                 >
                   <svg
@@ -175,7 +175,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="text-dark hover:text-primary transition-colors duration-300"
+                  className="text-white hover:text-primary transition-colors duration-300"
                   aria-label="Twitter"
                 >
                   <svg
@@ -194,7 +194,7 @@ export default function Home() {
                   href={`mailto:${siteText.social.email}`}
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.9 }}
-                  className="text-dark hover:text-primary transition-colors duration-300"
+                  className="text-white hover:text-primary transition-colors duration-300"
                   aria-label="Email"
                 >
                   <svg
@@ -245,12 +245,8 @@ export default function Home() {
       <section
         id="about"
         ref={aboutRef}
-        className="relative py-20 md:py-32 overflow-hidden"
+        className="relative py-20 md:py-32 overflow-hidden bg-[#1A1D26] text-[#D1D5DB]"
       >
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-accent/5 blur-[80px]"></div>
-        </div>
-        
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -259,9 +255,9 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-primary">{siteText.about.heading}</span>
+              <span className="text-[#00D9FF]">{siteText.about.heading}</span>
             </h2>
-            <p className="text-xl max-w-3xl mx-auto opacity-80">
+            <p className="text-xl max-w-3xl mx-auto opacity-90">
               {siteText.about.description}
             </p>
           </motion.div>
@@ -277,16 +273,16 @@ export default function Home() {
                 {siteText.about.professionalJourney.timeline.map((item, index) => (
                   <motion.div
                     key={index}
-                    className="relative pl-10 border-l-2 border-primary/30 pb-8 last:pb-0"
+                    className="relative pl-10 border-l-2 border-[#444851] pb-8 last:pb-0"
                     initial={{ opacity: 0, x: -20 }}
                     animate={aboutInView ? { opacity: 1, x: 0 } : {}}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
-                    <div className="absolute left-[-10px] top-0 w-5 h-5 rounded-full bg-primary shadow-md"></div>
-                    <div className="font-subheading text-accent font-medium text-lg leading-tight">{item.year}</div>
+                    <div className="absolute left-[-10px] top-0 w-5 h-5 rounded-full bg-[#00D9FF] shadow-md shadow-[#00D9FF]/20"></div>
+                    <div className="font-subheading text-[#FF6EC7] font-medium text-lg leading-tight">{item.year}</div>
                     <div className="font-bold text-2xl leading-tight mt-1 mb-1">{item.title}</div>
-                    <div className="text-primary font-medium leading-tight mb-2">{item.company}</div>
-                    <div className="opacity-80 text-base leading-relaxed mt-1">{item.description}</div>
+                    <div className="text-[#00D9FF] font-medium leading-tight mb-2">{item.company}</div>
+                    <div className="opacity-90 text-base leading-relaxed mt-1">{item.description}</div>
                   </motion.div>
                 ))}
               </div>
@@ -299,7 +295,7 @@ export default function Home() {
       <section
         id="projects"
         ref={projectsRef}
-        className="relative py-20 md:py-32 bg-gray-50/50"
+        className="relative py-20 md:py-32"
       >
         <div className="absolute inset-0 z-0">
           <div className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full bg-primary/5 blur-[80px]"></div>
@@ -330,7 +326,7 @@ export default function Home() {
               <motion.div
                 key={project.id}
                 variants={item}
-                className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100"
+                className="bg-[#1A1D26] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-[#444851]"
               >
                 <div className="h-48 overflow-hidden relative">
                   <Image
@@ -345,16 +341,16 @@ export default function Home() {
                 </div>
                 <div className="p-6">
                   <div className="mb-2">
-                    <h3 className="text-xl font-semibold">{project.title}</h3>
+                    <h3 className="text-xl font-semibold text-[#D1D5DB]">{project.title}</h3>
                   </div>
-                  <p className="opacity-80 mb-4 line-clamp-3">{project.description}</p>
+                  <p className="text-[#D1D5DB]/80 mb-4 line-clamp-3">{project.description}</p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.githubLink && (
                       <a
                         href={project.githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full flex items-center hover:bg-primary/20 transition-colors"
+                        className="px-3 py-1 bg-[#00D9FF]/10 text-[#00D9FF] text-xs rounded-full flex items-center hover:bg-[#00D9FF]/20 transition-colors"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -372,7 +368,7 @@ export default function Home() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 bg-gray-100 text-dark opacity-80 text-xs rounded-full"
+                        className="px-3 py-1 bg-[#444851] text-[#D1D5DB] text-xs rounded-full"
                       >
                         {tag}
                       </span>
@@ -385,74 +381,6 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Contact Section */}
-      <section
-        id="contact"
-        ref={contactRef}
-        className="relative py-20 md:py-32"
-      >
-        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={contactInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="font-heading text-4xl md:text-5xl font-bold mb-6">
-              <span className="text-primary">Get In Touch</span>
-            </h2>
-            <p className="text-xl mb-10 opacity-80">
-              Feel free to reach out if you're looking for a data scientist, have a question, or just want to connect.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <motion.a
-                href={`mailto:${siteText.social.email}`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center bg-primary hover:bg-primary/90 text-white py-3 px-8 rounded-lg transition-all shadow-md hover:shadow-lg w-full sm:w-auto justify-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="mr-2"
-                >
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                  <polyline points="22,6 12,13 2,6"></polyline>
-                </svg>
-                Email Me
-              </motion.a>
-              
-              <motion.a
-                href={siteText.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center bg-accent hover:bg-accent/90 text-white py-3 px-8 rounded-lg transition-all shadow-md hover:shadow-lg w-full sm:w-auto justify-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="mr-2"
-                >
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                </svg>
-                LinkedIn
-              </motion.a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
       
       <Footer />
     </main>
