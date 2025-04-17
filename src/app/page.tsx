@@ -89,7 +89,7 @@ export default function Home() {
                   >
                     👋
                   </motion.span>
-                </span>{' '}
+                </span>{" I'm "}
                 {siteText.general.siteName}
               </span>
               <br />{siteText.home.hero.heading}
