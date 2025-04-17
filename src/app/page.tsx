@@ -69,38 +69,11 @@ export default function Home() {
         className="flex-grow flex items-center justify-center overflow-hidden p-4 md:p-8" // Use flex-grow to take available space
       >
         {/* Inner black container with fixed dimensions */}
-        <div className="bg-black text-white w-[90vw] h-[80vh] flex flex-col items-center justify-center text-center p-6 md:p-12 relative overflow-hidden"> {/* Centering content */}
-          
-          {/* Optional: Background effects */}
-          <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
-            <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-primary/10 blur-[80px]"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-accent/10 blur-[80px]"></div>
-          </div>
+        <div className="bg-black text-white w-[95vw] h-[90vh] flex flex-col items-center justify-center text-center p-6 md:p-12 relative overflow-hidden"> {/* Centering content */}
 
           {/* Content Wrapper - Centered within the black box */}
           <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center">
             
-            {/* Profile Image - Centered */}
-            <motion.div 
-              className="order-1 mb-6"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={heroInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64">
-                <div className="relative w-full h-full rounded-full overflow-hidden">
-                  <Image 
-                    src="/images/profile.jpg" 
-                    alt="Neel Patel - Profile Photo"
-                    fill
-                    style={{ objectFit: 'cover' }}
-                    className="rounded-full"
-                    priority
-                  />
-                </div>
-              </div>
-            </motion.div>
-              
             {/* Hero Content - Centered */}
             <motion.div 
               className="order-2 text-center"
@@ -111,7 +84,7 @@ export default function Home() {
               {/* Heading */}
               <h1 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
                 {siteText.home.hero.greeting}{' '}
-                <span className="text-primary hover:text-primary/80 transition-colors">
+                <span className="hover:text-primary/80 transition-colors">
                   <span className="inline-block">
                     <motion.span
                       className="inline-block"
@@ -229,7 +202,7 @@ export default function Home() {
                         });
                       }
                     }}
-                    className="relative bg-white text-black border border-white hover:bg-gray-200 rounded-lg px-8 py-3 text-lg transition-all shadow-md hover:shadow-lg"
+                    className="relative bg-transparent text-white border border-white hover:bg-white/20 rounded-lg px-8 py-3 text-lg transition-all shadow-md hover:shadow-lg"
                   >
                     Learn More
                   </button>
