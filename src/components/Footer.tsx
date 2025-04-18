@@ -78,19 +78,12 @@ const Footer = () => {
     },
   ];
 
-  const handleScrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
   return (
-    <footer className="py-10 bg-black text-white border-t">
+    <footer className="py-10 bg-dark-card text-light/80 border-t border-dark-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
           <div className="flex items-center space-x-3">
-            <span className="font-heading text-xl font-bold text-white">{siteText.general.siteName}</span>
+            <span className="font-heading text-xl font-bold text-light">{siteText.general.siteName}</span>
           </div>
 
           <div className="flex space-x-6">
@@ -100,7 +93,7 @@ const Footer = () => {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#D1D5DB] hover:text-primary transition-colors duration-300"
+                className="text-light/70 hover:text-primary transition-colors duration-300"
                 whileHover={{ scale: 1.1, y: -4 }}
                 whileTap={{ scale: 0.9 }}
                 aria-label={social.name}
@@ -110,7 +103,7 @@ const Footer = () => {
             ))}
           </div>
 
-          <div className="text-[#D1D5DB]/80 text-sm flex flex-col items-center md:items-end">
+          <div className="text-light/70 text-sm flex flex-col items-center md:items-end">
             <div>{`© ${currentYear} ${siteText.general.siteName}. All rights reserved.`}</div>
             <div className="mt-1 text-xs flex items-center">
               {siteText.footer.tagline}

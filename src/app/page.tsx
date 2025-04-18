@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-// import Navbar from '@/components/Navbar'; // Removed Navbar import
+import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import siteText from '@/data/siteText.json';
 import projectsData from '@/data/projects.json';
@@ -59,56 +59,45 @@ export default function Home() {
   };
   
   return (
-    <main className="min-h-screen bg-black font-sans flex flex-col"> {/* Ensure flex column layout for footer */}
+    <main className="min-h-screen bg-black font-sans flex flex-col relative">
+      <Navbar />
 
       {/* Hero Section - Centered Content */}
       <section
         id="home"
         ref={heroRef}
-        className="flex-grow flex flex-col items-center justify-center text-center text-white p-6 md:p-12 min-h-screen overflow-hidden" // Simplified classes, added flex-col, text-center, text-white, min-h-screen, padding
+        className="flex flex-col items-center justify-center text-center text-light p-6 md:p-12 h-screen overflow-hidden"
       >
         {/* Content Wrapper - Centered within the section */}
         <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center">
 
           {/* Hero Content - Centered */}
           <motion.div
-            className="text-center" // Removed order-2, already centered by parent flex
+            className="text-center space-y-8"
             initial={{ opacity: 0, y: 20 }}
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
             {/* Heading */}
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
-              {siteText.home.hero.greeting}{' '}
-              <span className="hover:text-primary/80 transition-colors">
-                <span className="inline-block">
-                  <motion.span
-                    className="inline-block"
-                    animate={{ rotate: [0, 10, 0] }}
-                    transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 3 }}
-                  >
-                    👋
-                  </motion.span>
-                </span>{" I'm "}
-                {siteText.general.siteName}
-              </span>
-              <br />{siteText.home.hero.heading}
+            <h1 className="font-heading text-6xl md:text-7xl lg:text-8xl font-bold uppercase leading-tight text-light">
+              {siteText.home.hero.greeting}<br />
+              <span>{siteText.general.siteName}</span>
             </h1>
             {/* Subtext */}
-            <p className="text-xl md:text-2xl mb-6 mt-4 max-w-2xl mx-auto opacity-90">
-              {siteText.home.hero.description}
+            <p className="text-lg md:text-xl max-w-2xl mx-auto opacity-80 uppercase tracking-[0.2em] font-body text-light/80">
+              {siteText.general.jobTitle}
             </p>
                 
             {/* Social Media Links - Centered */}
-            <div className="flex justify-center space-x-6 mb-8">
+            <div className="flex justify-center space-x-6">
               {/* GitHub Link */}
               <motion.a
                 href={siteText.social.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -5 }}
+                whileHover={{ scale: 1.1, y: -5, color: 'var(--color-primary)' }}
                 whileTap={{ scale: 0.9 }}
-                className="text-white hover:text-primary transition-colors duration-300"
+                className="text-light/80 transition-colors duration-300"
                 aria-label="GitHub"
               >
                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7">
@@ -120,9 +109,9 @@ export default function Home() {
                 href={siteText.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -5 }}
+                whileHover={{ scale: 1.1, y: -5, color: 'var(--color-primary)' }}
                 whileTap={{ scale: 0.9 }}
-                className="text-white hover:text-primary transition-colors duration-300"
+                className="text-light/80 transition-colors duration-300"
                 aria-label="LinkedIn"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7">
@@ -134,9 +123,9 @@ export default function Home() {
                 href={siteText.social.twitter}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.1, y: -5 }}
+                whileHover={{ scale: 1.1, y: -5, color: 'var(--color-primary)' }}
                 whileTap={{ scale: 0.9 }}
-                className="text-white hover:text-primary transition-colors duration-300"
+                className="text-light/80 transition-colors duration-300"
                 aria-label="Twitter"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7">
@@ -146,9 +135,9 @@ export default function Home() {
               {/* Email Link */}
               <motion.a
                 href={`mailto:${siteText.social.email}`}
-                whileHover={{ scale: 1.1, y: -5 }}
+                whileHover={{ scale: 1.1, y: -5, color: 'var(--color-primary)' }}
                 whileTap={{ scale: 0.9 }}
-                className="text-white hover:text-primary transition-colors duration-300"
+                className="text-light/80 transition-colors duration-300"
                 aria-label="Email"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-7 h-7">
@@ -158,49 +147,26 @@ export default function Home() {
               </motion.a>
             </div>
                 
-            {/* Buttons - Centered */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {/* Explore Button */}
+            {/* Button - Centered */}
+            <div className="flex justify-center items-center">
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="relative inline-block"
               >
-                <button 
+                <button
                   onClick={() => {
                     const projectsSection = document.getElementById('projects');
                     if (projectsSection) {
                       window.scrollTo({
-                        top: projectsSection.offsetTop - 80, // Adjust offset if needed
+                        top: projectsSection.offsetTop - 80,
                         behavior: 'smooth',
                       });
                     }
                   }}
-                  className="relative bg-primary hover:bg-primary/80 text-white rounded-lg px-8 py-3 text-lg transition-all shadow-md hover:shadow-lg"
+                  className="relative bg-transparent text-light border border-light hover:bg-light hover:text-dark rounded-lg px-8 py-3 text-lg uppercase tracking-wider transition-colors duration-300 shadow-sm hover:shadow-md"
                 >
-                  Explore My Work
-                  <span className="ml-2">→</span>
-                </button>
-              </motion.div>
-              {/* Learn More Button */}
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="relative inline-block"
-              >
-                <button 
-                  onClick={() => {
-                    const aboutSection = document.getElementById('about');
-                    if (aboutSection) {
-                      window.scrollTo({
-                        top: aboutSection.offsetTop - 80, // Adjust offset if needed
-                        behavior: 'smooth',
-                      });
-                    }
-                  }}
-                  className="relative bg-transparent text-white border border-white hover:bg-white/20 rounded-lg px-8 py-3 text-lg transition-all shadow-md hover:shadow-lg"
-                >
-                  Learn More
+                  View My Work
                 </button>
               </motion.div>
             </div>
@@ -213,7 +179,7 @@ export default function Home() {
       <section
         id="about"
         ref={aboutRef}
-        className="relative bg-white text-black py-20 md:py-32 overflow-hidden"
+        className="relative bg-dark text-light py-20 md:py-32 overflow-hidden"
       >
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -223,44 +189,41 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-black">{siteText.about.heading}</span>
+              <span className="text-light">{siteText.about.heading}</span>
             </h2>
-            <p className="text-xl max-w-3xl mx-auto opacity-90">
+            <p className="text-xl max-w-3xl mx-auto opacity-80 text-light/80">
               {siteText.about.description}
             </p>
           </motion.div>
 
           {/* Single Column Layout for Timeline */}
-          <div className="flex justify-center"> {/* Center the single column */} 
-            {/* Column 1: Timeline Section */} 
+          <div className="flex justify-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={aboutInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="w-full lg:w-2/3" // Allow it to take more width, adjust as needed 
+              className="w-full lg:w-2/3"
             >
               <div className="max-w-4xl mx-auto relative">
                 <div className="space-y-6">
                   {siteText.about.professionalJourney.timeline.map((item, index) => (
                     <motion.div
                       key={index}
-                      className="relative pl-10 border-l-2 border-gray-300 pb-8 last:pb-0"
+                      className="relative pl-10 border-l-2 border-dark-border pb-8 last:pb-0"
                       initial={{ opacity: 0, x: -20 }}
                       animate={aboutInView ? { opacity: 1, x: 0 } : {}}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                     >
                       <div className="absolute left-[-10px] top-0 w-5 h-5 rounded-full bg-primary shadow-md shadow-primary/20"></div>
-                      <div className="font-subheading text-primary font-medium text-lg leading-tight">{item.year}</div>
-                      <div className="font-bold text-2xl leading-tight mt-1 mb-1">{item.title}</div>
-                      <div className="text-primary font-medium leading-tight mb-2">{item.company}</div>
-                      <div className="opacity-90 text-base leading-relaxed mt-1">{item.description}</div>
+                      <div className="font-subheading text-light font-medium text-lg leading-tight">{item.year}</div>
+                      <div className="font-bold text-2xl leading-tight mt-1 mb-1 text-light">{item.title}</div>
+                      <div className="text-light font-medium leading-tight mb-2">{item.company}</div>
+                      <div className="opacity-90 text-base leading-relaxed mt-1 text-light/80">{item.description}</div>
                     </motion.div>
                   ))}
                 </div>
               </div>
             </motion.div>
-
-            {/* Column 2 Removed */}
           </div>
         </div>
       </section> { /* End About Section */ }
@@ -269,10 +232,10 @@ export default function Home() {
       <section
         id="projects"
         ref={projectsRef}
-        className="relative py-20 md:py-32"
+        className="relative bg-black text-light py-20 md:py-32"
       >
-        <div className="absolute inset-0 z-0">
-          <div className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full bg-primary/5 blur-[80px]"></div>
+        <div className="absolute inset-0 z-0 overflow-hidden">
+          <div className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full bg-light/5 blur-[100px]"></div>
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -283,9 +246,9 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-primary">{siteText.projects.heading}</span>
+              <span className="text-light">{siteText.projects.heading}</span>
             </h2>
-            <p className="text-xl max-w-3xl mx-auto opacity-80">
+            <p className="text-xl max-w-3xl mx-auto opacity-80 text-light/80">
               {siteText.projects.description}
             </p>
           </motion.div>
@@ -300,31 +263,20 @@ export default function Home() {
               <motion.div
                 key={project.id}
                 variants={item}
-                className="bg-[#1A1D26] rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-[#444851]"
+                className="bg-dark-card rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 border border-dark-border"
               >
-                <div className="h-48 overflow-hidden relative">
-                  <Image
-                    src={project.imageUrl}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 hover:scale-110"
-                    priority={parseInt(project.id) <= 3}
-                    quality={80}
-                  />
-                </div>
                 <div className="p-6">
-                  <div className="mb-2">
-                    <h3 className="text-xl font-semibold text-[#D1D5DB]">{project.title}</h3>
+                  <div className="mb-4">
+                    <h3 className="text-xl font-semibold text-light font-body">{project.title}</h3>
                   </div>
-                  <p className="text-[#D1D5DB]/80 mb-4 line-clamp-3">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <p className="text-light/80 mb-4 line-clamp-3">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mt-6 items-center">
                     {project.githubLink && (
                       <a
                         href={project.githubLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-3 py-1 bg-[#00D9FF]/10 text-[#00D9FF] text-xs rounded-full flex items-center hover:bg-[#00D9FF]/20 transition-colors"
+                        className="px-3 py-1 bg-light/10 text-primary text-xs rounded-full flex items-center hover:bg-light/20 transition-colors"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -342,7 +294,7 @@ export default function Home() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="px-3 py-1 bg-[#444851] text-[#D1D5DB] text-xs rounded-full"
+                        className="px-3 py-1 bg-gunmetal/50 text-light/70 text-xs rounded-full"
                       >
                         {tag}
                       </span>

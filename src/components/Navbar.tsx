@@ -6,33 +6,35 @@ import { motion } from 'framer-motion';
 import siteText from '@/data/siteText.json';
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      const sections = ['home', 'about', 'projects'];
+      let currentSection = 'home';
+      const offset = 100; // Offset from top to trigger active state
 
-      // Update active section based on scroll position
-      const sections = ['home', 'about', 'projects', 'contact'];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          if (rect.top <= 100 && rect.bottom >= 100) {
-            setActiveSection(section);
+          if (rect.top <= offset && rect.bottom >= offset) {
+            currentSection = section;
             break;
           }
         }
       }
+      // Check if scrolled near the bottom of the page
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
+         currentSection = sections[sections.length - 1]; // Set to last section
+      }
+
+      setActiveSection(currentSection);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -43,48 +45,36 @@ const Navbar = () => {
         top: section.offsetTop - 80,
         behavior: 'smooth',
       });
-      setActiveSection(sectionId);
     }
     if (isMobileMenuOpen) {
       setIsMobileMenuOpen(false);
     }
   };
 
-  // Modify navigation links for SPA style
   const navLinks = [
     { name: 'Home', id: 'home' },
     { name: 'About Me', id: 'about' },
     { name: 'Projects', id: 'projects' },
-    { name: 'Contact', id: 'contact' }
   ];
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-dark/80 backdrop-blur-md shadow-md py-3'
-          : 'bg-transparent py-5'
-      }`}
+      className="fixed w-full z-50 transition-all duration-300 bg-transparent py-5"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
+          {/* Left side placeholder if needed, currently empty */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <button 
-              onClick={() => scrollToSection('home')}
-              className="flex items-center cursor-pointer"
-            >
-              <span className="font-heading text-2xl font-bold text-primary">
-                {siteText.general.siteName}
-              </span>
-            </button>
+             initial={{ opacity: 0, x: -20 }}
+             animate={{ opacity: 1, x: 0 }}
+             transition={{ duration: 0.5 }}
+             className="w-1/3" // Add width to balance flex
+           >
+             {/* Content removed, kept div for layout balance */}
           </motion.div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation (Centered) */}
+          <div className="hidden md:flex items-center justify-center space-x-8 w-1/3"> {/* Centered */}
             {navLinks.map((link, index) => (
               <motion.div
                 key={link.name}
@@ -94,11 +84,13 @@ const Navbar = () => {
               >
                 <button
                   onClick={() => scrollToSection(link.id)}
+                  // Use text-light/70 for inactive, text-primary (silver) for active
                   className={`font-subheading text-lg transition-colors duration-300 relative group ${
-                    activeSection === link.id ? 'text-primary font-medium' : 'text-dark-text'
+                    activeSection === link.id ? 'text-primary font-medium' : 'text-light/70 hover:text-light'
                   }`}
                 >
                   {link.name}
+                  {/* Underline uses primary (silver) */}
                   <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
                     activeSection === link.id ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}></span>
@@ -107,11 +99,12 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          {/* Mobile Menu Button (Right Aligned) */}
+          <div className="md:hidden flex items-center justify-end w-1/3"> {/* Ensure right alignment */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-dark-text focus:outline-none hover:text-primary transition-colors duration-300"
+              // Use text-light/70, hover uses primary (silver)
+              className="text-light/70 focus:outline-none hover:text-primary transition-colors duration-300"
               aria-label="Toggle menu"
             >
               <svg
@@ -148,7 +141,8 @@ const Navbar = () => {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
-          className="md:hidden bg-dark/95 backdrop-blur-md shadow-lg"
+          // Use dark-card bg, backdrop blur
+          className="md:hidden bg-dark-card/95 backdrop-blur-md shadow-lg"
         >
           <div className="px-6 py-6 space-y-5">
             {navLinks.map((link, index) => (
@@ -160,12 +154,14 @@ const Navbar = () => {
               >
                 <button
                   onClick={() => scrollToSection(link.id)}
-                  className={`block font-subheading text-xl transition-colors duration-300 ${
-                    activeSection === link.id ? 'text-primary font-medium' : 'text-dark-text'
+                   // Use text-light/80 for inactive, text-primary (silver) for active
+                  className={`block font-subheading text-xl transition-colors duration-300 w-full text-left ${
+                    activeSection === link.id ? 'text-primary font-medium' : 'text-light/80 hover:text-light'
                   }`}
                 >
                   <span className="relative">
                     {link.name}
+                    {/* Underline uses primary (silver) */}
                     <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
                       activeSection === link.id ? 'w-full' : 'w-0'
                     }`}></span>

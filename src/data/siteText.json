@@ -19,7 +19,7 @@
   },
   "home": {
     "hero": {
-      "greeting": "Hi",
+      "greeting": "Hello, I'm",
       "heading": "a Data Scientist! ",
       "description": "Transforming business problems using AI solutions"
     },
