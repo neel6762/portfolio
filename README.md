@@ -7,11 +7,7 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 - **Modern Tech Stack**: Built with Next.js 14, TypeScript, and Tailwind CSS
 - **Responsive Design**: Fully responsive layout that works on all devices
 - **Dark Mode**: Beautiful dark theme with smooth transitions
-- **Performance Optimized**:
-  - Next.js Image optimization
-  - Lazy loading for images
-  - Optimized image sizes
-  - Priority loading for important content
+- **Performance Optimized**: Built with performance in mind using Next.js best practices.
 - **Smooth Animations**: Using Framer Motion for fluid transitions
 - **SEO Friendly**: Built with Next.js for optimal search engine visibility
 - **Project Showcase**: Beautiful grid layout for displaying projects
@@ -63,16 +59,13 @@ A modern, responsive portfolio website built with Next.js, TypeScript, and Tailw
 ```
 src/
 ├── app/                 # Next.js app directory
-│   ├── about/          # About page
-│   ├── contact/        # Contact page
-│   ├── projects/       # Projects page
-│   └── page.tsx        # Home page
-├── components/         # Reusable components
+│   └── page.tsx        # Main page component containing all sections
+├── components/         # Reusable components (Navbar, Footer, etc.)
 ├── data/              # JSON data files
 │   ├── projects.json  # Project data
 │   └── siteText.json  # Site content
-├── lib/               # Utility functions
-├── providers/         # Context providers
+├── lib/               # Utility functions (if any)
+├── providers/         # Context providers (if any)
 └── styles/           # Global styles
 ```
 

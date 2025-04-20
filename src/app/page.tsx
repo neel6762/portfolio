@@ -8,6 +8,12 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import siteText from '@/data/siteText.json';
 import projectsData from '@/data/projects.json';
+import skillsData from '@/data/skills.json';
+import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaGitAlt, FaDocker, FaFigma, FaPython,
+         FaDatabase, FaAws, FaGithub, FaBrain, FaRobot, FaMicrochip, FaNetworkWired,
+         FaChartLine
+} from 'react-icons/fa';
+import { SiJavascript, SiTypescript, SiNextdotjs, SiTailwindcss } from 'react-icons/si';
 
 interface Project {
   id: string;
@@ -18,8 +24,66 @@ interface Project {
   githubLink?: string;
 }
 
+interface Skill {
+  name: string;
+  icon: string;
+}
+
+// Map icon names to actual components
+// You might want to move this to a separate utility file if it grows large
+const iconComponents: { [key: string]: React.ElementType } = {
+  SiJavascript: SiJavascript,
+  SiTypescript: SiTypescript,
+  FaReact: FaReact,
+  SiNextdotjs: SiNextdotjs,
+  FaNodeJs: FaNodeJs,
+  FaHtml5: FaHtml5,
+  FaCss3Alt: FaCss3Alt,
+  SiTailwindcss: SiTailwindcss,
+  FaGitAlt: FaGitAlt,
+  FaDocker: FaDocker,
+  FaFigma: FaFigma,
+  FaPython: FaPython,
+  FaDatabase: FaDatabase,
+  FaAws: FaAws,
+  FaGithub: FaGithub,
+  FaBrain: FaBrain,
+  FaRobot: FaRobot,
+  FaMicrochip: FaMicrochip,
+  FaNetworkWired: FaNetworkWired,
+  FaChartLine: FaChartLine
+};
+
+// Define specific colors for icons
+const iconColors: { [key: string]: string } = {
+  FaPython: 'text-blue-500', // Python blue
+  FaDatabase: 'text-orange-500', // Generic database orange
+  FaGitAlt: 'text-orange-600', // Git orange
+  FaDocker: 'text-blue-600', // Docker blue
+  FaAws: 'text-orange-400', // AWS orange
+  FaGithub: 'text-gray-800', // GitHub black/gray
+  FaBrain: 'text-pink-500', // LLMs pink
+  FaRobot: 'text-teal-500', // GenAI teal
+  FaMicrochip: 'text-purple-500', // ML purple
+  FaNetworkWired: 'text-indigo-500', // Deep Learning indigo
+  FaChartLine: 'text-green-500', // Data Science green
+  // Add colors for other icons if needed (JS, TS, React, etc.)
+  SiJavascript: 'text-yellow-400',
+  SiTypescript: 'text-blue-400',
+  FaReact: 'text-sky-500',
+  SiNextdotjs: 'text-black', // Or dark gray
+  FaNodeJs: 'text-green-600',
+  FaHtml5: 'text-orange-500',
+  FaCss3Alt: 'text-blue-500',
+  SiTailwindcss: 'text-cyan-400',
+  FaFigma: 'text-purple-500',
+  // Neo4j placeholder color (if we add it later)
+  // FaNeo4j: 'text-red-500',
+};
+
 export default function Home() {
   const [projects] = useState<Project[]>(projectsData);
+  const [skills] = useState<Skill[]>(skillsData);
   
   // Section refs for animations
   const [heroRef, heroInView] = useInView({
@@ -179,7 +243,7 @@ export default function Home() {
       <section
         id="about"
         ref={aboutRef}
-        className="relative bg-dark text-light py-20 md:py-32 overflow-hidden"
+        className="relative bg-[#fbf9f7] text-dark py-20 md:py-32 overflow-hidden"
       >
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -189,42 +253,60 @@ export default function Home() {
             className="text-center mb-16"
           >
             <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4">
-              <span className="text-light">{siteText.about.heading}</span>
+              <span className="text-dark">{siteText.about.heading}</span>
             </h2>
-            <p className="text-xl max-w-3xl mx-auto opacity-80 text-light/80">
-              {siteText.about.description}
-            </p>
+            <div className="flex flex-col md:flex-row gap-8 items-center mt-4 pt-10">
+              <div className="w-full md:w-1/3">
+                <Image
+                  src="/images/profile.jpg"
+                  alt="About me"
+                  width={300}
+                  height={300}
+                  className="rounded-lg"
+                />
+              </div>
+              <div className="w-full md:w-2/3">
+                <p className="text-xl leading-relaxed tracking-wide text-light/90 font-['Playwrite_Australia_SA'] text-left">
+                  {siteText.about.description}
+                </p>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Single Column Layout for Timeline */}
-          <div className="flex justify-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={aboutInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="w-full lg:w-2/3"
-            >
-              <div className="max-w-4xl mx-auto relative">
-                <div className="space-y-6">
-                  {siteText.about.professionalJourney.timeline.map((item, index) => (
-                    <motion.div
-                      key={index}
-                      className="relative pl-10 border-l-2 border-dark-border pb-8 last:pb-0"
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={aboutInView ? { opacity: 1, x: 0 } : {}}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                    >
-                      <div className="absolute left-[-10px] top-0 w-5 h-5 rounded-full bg-primary shadow-md shadow-primary/20"></div>
-                      <div className="font-subheading text-light font-medium text-lg leading-tight">{item.year}</div>
-                      <div className="font-bold text-2xl leading-tight mt-1 mb-1 text-light">{item.title}</div>
-                      <div className="text-light font-medium leading-tight mb-2">{item.company}</div>
-                      <div className="opacity-90 text-base leading-relaxed mt-1 text-light/80">{item.description}</div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
+          {/* Areas of Expertise Section - Added */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={aboutInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2 }} // Slight delay after the intro fades in
+            className="mt-16 mb-16 text-dark p-8 rounded-lg"
+          >
+            <h2 className="font-heading text-4xl md:text-5xl font-bold mb-12 text-center">
+              <span className="text-dark">Skills</span>
+            </h2>
+            {/* Skills Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 justify-items-center">
+              {skills.map((skill) => {
+                const IconComponent = iconComponents[skill.icon];
+                return (
+                  <motion.div
+                    key={skill.name}
+                    className="flex flex-col items-center text-center space-y-2"
+                    whileHover={{ scale: 1.1, y: -5 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                  >
+                    {IconComponent ? (
+                      <IconComponent className={`w-12 h-12 mb-2 ${iconColors[skill.icon] || 'text-dark/80'}`} />
+                    ) : (
+                      <div className="w-12 h-12 bg-gray-300 rounded mb-2"></div>
+                    )}
+                    <span className="text-sm font-medium text-dark/80">{skill.name}</span>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
+          {/* End Areas of Expertise Section */}
+     
         </div>
       </section> { /* End About Section */ }
       
