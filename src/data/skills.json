@@ -1,0 +1,14 @@
+[
+  { "name": "Python", "icon": "FaPython" },
+  { "name": "Neo4j", "icon": "FaShareAlt" },
+  { "name": "SQL", "icon": "FaDatabase" },
+  { "name": "Git", "icon": "FaGitAlt" },
+  { "name": "Docker", "icon": "FaDocker" },
+  { "name": "AWS", "icon": "FaAws" },
+  { "name": "Github", "icon": "FaGithub" },
+  { "name": "LLMs", "icon": "FaBrain" },
+  { "name": "GenAI", "icon": "FaRobot" },
+  { "name": "Machine Learning", "icon": "FaMicrochip" },
+  { "name": "Deep Learning", "icon": "FaNetworkWired" },
+  { "name": "Data Science", "icon": "FaChartLine" }
+] 

@@ -9,19 +9,36 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#58A6FF', // Bright Blue (Accent)
-        secondary: '#F97583', // Coral (Secondary Accent)
-        accent: '#58A6FF', // Bright Blue
-        light: '#F9FAFB', // Light background
-        dark: '#0D1117', // GitHub Dark (Background)
-        'dark-text': '#C9D1D9', // Light Slate (Primary Text)
-        'dark-card': '#161B22', // Slightly lighter than background
-        'dark-border': '#30363D', // Cool Gray (Divider/Border)
+        // B&W Palette Inspired Names
+        'jet-black': '#121212',
+        'charcoal': '#2C2C2C',
+        'gunmetal': '#484848',
+        'smoke': '#999999',
+        'ash-gray': '#B2B2B2',
+        'silver': '#C0C0C0',
+        'light-gray': '#E0E0E0',
+        'off-white': '#FAFAFA', // Using #FAFAFA for slightly softer white
+
+        // Semantic Mapping (Updated Values)
+        primary: 'var(--color-silver)', // Silver for primary accents
+        secondary: 'var(--color-smoke)', // Smoke for secondary elements (less emphasis)
+        accent: 'var(--color-silver)', // Consistent accent
+
+        light: 'var(--color-off-white)', // Main light text color
+        dark: 'var(--color-charcoal)', // Main dark background
+
+        'dark-text': 'var(--color-off-white)', // Alias for main text on dark background
+        'dark-card': 'var(--color-jet-black)', // Card background
+        'dark-border': 'var(--color-gunmetal)', // Borders
+
+        // Specific Usage Colors
+        'text-muted': 'var(--color-smoke)', // Muted text
+        'placeholder-color': 'var(--color-ash-gray)', // Placeholder text
       },
       fontFamily: {
-        heading: ['Inter', 'sans-serif'],
-        subheading: ['Inter', 'sans-serif'],
-        body: ['Inter', 'sans-serif'],
+        heading: ['var(--font-playfair-display)', 'serif'],
+        subheading: ['var(--font-inter)', 'sans-serif'],
+        body: ['var(--font-inter)', 'sans-serif'],
       },
       animation: {
         'bounce-slow': 'bounce 3s infinite',
@@ -57,5 +74,25 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // Plugin to define CSS variables from the theme colors
+    function ({ addBase, theme }) {
+      function extractColorVars(colorObj, colorGroup = '') {
+        return Object.keys(colorObj).reduce((vars, colorKey) => {
+          const value = colorObj[colorKey];
+          const cssVariable = colorKey === 'DEFAULT' ? `--color${colorGroup}` : `--color${colorGroup}-${colorKey}`; 
+
+          const newVars = typeof value === 'string'
+            ? { [cssVariable]: value }
+            : extractColorVars(value, `-${colorKey}`);
+
+          return { ...vars, ...newVars };
+        }, {});
+      }
+
+      addBase({
+        ':root': extractColorVars(theme('colors')),
+      });
+    },
+  ],
 } 

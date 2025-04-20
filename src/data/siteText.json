@@ -7,8 +7,7 @@
     "links": [
       { "name": "Home", "id": "home" },
       { "name": "About Me", "id": "about" },
-      { "name": "Projects", "id": "projects" },
-      { "name": "Contact", "id": "contact" }
+      { "name": "Projects", "id": "projects" }
     ]
   },
   "social": {
@@ -19,7 +18,7 @@
   },
   "home": {
     "hero": {
-      "greeting": "Hi, I'm",
+      "greeting": "Hello, I'm",
       "heading": "a Data Scientist! ",
       "description": "Transforming business problems using AI solutions"
     },
@@ -30,8 +29,8 @@
     }
   },
   "about": {
-    "heading": "About Me",
-    "description": "Get to know more about my journey, skills, and experiences.",
+    "heading": "Data Scientist | Problem Solver | Lifelong Learner",
+    "description": "I'm a Data Scientist with a passion for uncovering insights and building intelligent systems that drive real impact. Based in Ottawa, I specialize in machine learning, natural language processing, and currently, I’m diving deep into the mechanics of Large Language Models—building one from scratch to truly understand how they work. My experience blends practical analytics with a hands-on approach to model development, including crafting tools that streamline processes and enhance decision-making. Whether it's developing robust ML pipelines or experimenting with cutting-edge AI.",
     "sections": [],
     "professionalJourney": {
       "title": "",
@@ -55,44 +54,6 @@
           "description": "Focused on machine learning and deep learning, developing expertise in AI research and data-driven problem-solving."
         }
       ]
-    },
-    "skills": {
-      "heading": "Skills",
-      "categories": [
-        {
-          "name": "Programming",
-          "items": ["Python", "Cypher", "SQL", "Shell Scripting"]
-        },
-        {
-          "name": "Data Science",
-          "items": ["Machine Learning", "Deep Learning", "NLP", "Data Visualization"]
-        },
-        {
-          "name": "Tools & Frameworks",
-          "items": ["PyTorch", "scikit-learn", "Pandas"]
-        },
-        {
-          "name": "Databases",
-          "items": ["PostgreSQL", "MySQL", "Neo4j"]
-        }
-      ]
-    },
-    "education": {
-      "heading": "Education",
-      "degrees": [
-        {
-          "period": "2019 - 2021",
-          "degree": "MSc in Computer Science",
-          "institution": "University of Ottawa",
-          "description": "Specialized in Machine Learning and AI"
-        },
-        {
-          "period": "2015 - 2019",
-          "degree": "BSc in Mathematics",
-          "institution": "University of Waterloo",
-          "description": "Focus on Applied Mathematics and Statistics"
-        }
-      ]
     }
   },
   "projects": {
@@ -100,8 +61,6 @@
     "description": "Explore my portfolio of projects showcasing my skills in AI, and graph analytics."
   },
   "footer": {
-    "copyright": "© 2025 Neel Patel",
-    "tagline": "Build with ",
-    "cursorLink": "https://cursor.sh"
+    "copyright": "© 2025 Neel Patel"
   }
 } 
