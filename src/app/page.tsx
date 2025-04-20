@@ -11,7 +11,7 @@ import projectsData from '@/data/projects.json';
 import skillsData from '@/data/skills.json';
 import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaGitAlt, FaDocker, FaFigma, FaPython,
          FaDatabase, FaAws, FaGithub, FaBrain, FaRobot, FaMicrochip, FaNetworkWired,
-         FaChartLine
+         FaChartLine, FaChevronDown
 } from 'react-icons/fa';
 import { SiJavascript, SiTypescript, SiNextdotjs, SiTailwindcss } from 'react-icons/si';
 
@@ -87,7 +87,6 @@ export default function Home() {
   
   // Section refs for animations
   const [heroRef, heroInView] = useInView({
-    triggerOnce: true,
     threshold: 0.1,
   });
   
@@ -122,15 +121,30 @@ export default function Home() {
     show: { opacity: 1, y: 0 },
   };
   
+  // Navbar animation variants
+  const navbarVariants = {
+    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: '-100%' }, // Slide up and fade out
+  };
+  
   return (
     <main className="min-h-screen bg-black font-sans flex flex-col relative">
-      <Navbar />
+      {/* Wrap Navbar in motion.div for animation */}
+      <motion.div
+        variants={navbarVariants}
+        initial="visible" // Start visible
+        animate={heroInView ? 'visible' : 'hidden'} // Animate based on hero section visibility
+        transition={{ duration: 0.3, ease: "easeInOut" }} // Smooth transition
+        className="fixed top-0 left-0 w-full z-50" // Ensure it stays fixed and on top
+      >
+        <Navbar />
+      </motion.div>
 
       {/* Hero Section - Centered Content */}
       <section
         id="home"
         ref={heroRef}
-        className="flex flex-col items-center justify-center text-center text-light p-6 md:p-12 h-screen overflow-hidden"
+        className="flex flex-col items-center justify-center text-center text-light p-6 md:p-12 h-screen overflow-hidden relative"
       >
         {/* Content Wrapper - Centered within the section */}
         <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center">
@@ -237,13 +251,46 @@ export default function Home() {
 
           </motion.div> { /* End Hero Content */ }
         </div> { /* End Content Wrapper */ }
+        
+        {/* Scroll Down Arrow - Moved inside the section */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20"
+        >
+          <motion.button
+            onClick={() => {
+              const aboutSection = document.getElementById('about');
+              if (aboutSection) {
+                window.scrollTo({
+                  top: aboutSection.offsetTop - 80, // Adjust for navbar height if necessary
+                  behavior: 'smooth',
+                });
+              }
+            }}
+            aria-label="Scroll down"
+            className="text-light/70 hover:text-light focus:outline-none transition-colors duration-300"
+            animate={{
+              y: ["0%", "20%", "0%"] // Bouncing animation
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              repeatType: "loop",
+              ease: "easeInOut"
+            }}
+          >
+            <FaChevronDown className="w-8 h-8" />
+          </motion.button>
+        </motion.div>
       </section> { /* End Hero Section */ }
       
       {/* About Section */}
       <section
         id="about"
         ref={aboutRef}
-        className="relative bg-[#fbf9f7] text-dark py-20 md:py-32 overflow-hidden"
+        className="relative bg-[#f5f5f5] text-dark py-20 md:py-32 overflow-hidden"
       >
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
