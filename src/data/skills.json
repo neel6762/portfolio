@@ -1,6 +1,6 @@
 [
   { "name": "Python", "icon": "FaPython" },
-  { "name": "Neo4j", "icon": "FaNeo4j" },
+  { "name": "Neo4j", "icon": "FaShareAlt" },
   { "name": "SQL", "icon": "FaDatabase" },
   { "name": "Git", "icon": "FaGitAlt" },
   { "name": "Docker", "icon": "FaDocker" },

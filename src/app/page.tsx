@@ -11,7 +11,7 @@ import projectsData from '@/data/projects.json';
 import skillsData from '@/data/skills.json';
 import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaGitAlt, FaDocker, FaFigma, FaPython,
          FaDatabase, FaAws, FaGithub, FaBrain, FaRobot, FaMicrochip, FaNetworkWired,
-         FaChartLine, FaChevronDown
+         FaChartLine, FaChevronDown, FaShareAlt
 } from 'react-icons/fa';
 import { SiJavascript, SiTypescript, SiNextdotjs, SiTailwindcss } from 'react-icons/si';
 
@@ -20,7 +20,6 @@ interface Project {
   title: string;
   description: string;
   tags: string[];
-  imageUrl: string;
   githubLink?: string;
 }
 
@@ -51,7 +50,8 @@ const iconComponents: { [key: string]: React.ElementType } = {
   FaRobot: FaRobot,
   FaMicrochip: FaMicrochip,
   FaNetworkWired: FaNetworkWired,
-  FaChartLine: FaChartLine
+  FaChartLine: FaChartLine,
+  FaShareAlt: FaShareAlt
 };
 
 // Define specific colors for icons
@@ -77,6 +77,7 @@ const iconColors: { [key: string]: string } = {
   FaCss3Alt: 'text-blue-500',
   SiTailwindcss: 'text-cyan-400',
   FaFigma: 'text-purple-500',
+  FaShareAlt: 'text-blue-700',
   // Neo4j placeholder color (if we add it later)
   // FaNeo4j: 'text-red-500',
 };
@@ -302,26 +303,61 @@ export default function Home() {
             <h2 className="font-heading text-4xl md:text-5xl font-bold mb-4">
               <span className="text-dark">{siteText.about.heading}</span>
             </h2>
-            <div className="flex flex-col md:flex-row gap-8 items-center mt-4 pt-10">
-              <div className="w-full md:w-1/3">
+            <p className="text-xl font-subheading leading-relaxed tracking-wide font-['Playwrite_Australia_SA']">
+              I'm always looking to push boundaries and create data-driven solutions that matter
+            </p>
+            <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-start mt-4 pt-10"> {/* Main container: flex-row on medium+, adjusted gap */}
+              {/* Div 1: Profile Image (Takes up 1/3 width on medium+) */}
+              <div className="w-full md:w-1/3 flex justify-center"> {/* Removed items-center */}
                 <Image
                   src="/images/profile.jpg"
                   alt="About me"
                   width={300}
                   height={300}
-                  className="rounded-lg"
+                  className="rounded-full object-cover w-[200px] h-[200px] md:w-[250px] md:h-[250px] lg:w-[300px] lg:h-[300px]"
                 />
               </div>
-              <div className="w-full md:w-2/3">
-                <p className="text-xl leading-relaxed tracking-wide text-light/90 font-['Playwrite_Australia_SA'] text-left">
-                  {siteText.about.description}
-                </p>
+              
+              {/* Div 2: Text and Skills (Takes up 2/3 width on medium+, stacked vertically) */}
+              <div className="w-full md:w-2/3 flex flex-col gap-8"> {/* Added vertical gap */}
+                {/* Text Sub-Div */}
+                <div>
+                  <p className="text-xl leading-relaxed tracking-wide text-dark/90 font-['Playwrite_Australia_SA'] text-left">
+                    {siteText.about.description}
+                  </p>
+                </div>
+                
+                {/* Skills Sub-Div */}
+                <div>
+                  {/* Skills Grid - Moved */}
+                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 justify-items-center"> {/* Changed justify-items-start back to justify-items-center */}
+                    {skills.map((skill) => {
+                      const IconComponent = iconComponents[skill.icon];
+                      return (
+                        <motion.div
+                          key={skill.name}
+                          className="flex flex-col items-center text-center space-y-2"
+                          whileHover={{ scale: 1.1, y: -5 }}
+                          transition={{ type: 'spring', stiffness: 300 }}
+                        >
+                          {IconComponent ? (
+                            <IconComponent className={`w-10 h-10 mb-1 ${iconColors[skill.icon] || 'text-dark/80'}`} /> /* Adjusted size */
+                          ) : (
+                            <div className="w-10 h-10 bg-gray-300 rounded mb-1"></div> /* Adjusted size */
+                          )}
+                          <span className="text-xs font-medium text-dark/80">{skill.name}</span> {/* Adjusted text size */}
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                  {/* End Skills Grid - Moved */}
+                </div>
               </div>
             </div>
           </motion.div>
 
           {/* Areas of Expertise Section - Added */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={aboutInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }} // Slight delay after the intro fades in
@@ -329,9 +365,9 @@ export default function Home() {
           >
             <h2 className="font-heading text-4xl md:text-5xl font-bold mb-12 text-center">
               <span className="text-dark">Skills</span>
-            </h2>
+            </h2> */}
             {/* Skills Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 justify-items-center">
+            {/* <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 justify-items-center">
               {skills.map((skill) => {
                 const IconComponent = iconComponents[skill.icon];
                 return (
@@ -351,9 +387,9 @@ export default function Home() {
                 );
               })}
             </div>
-          </motion.div>
+          </motion.div> */}
           {/* End Areas of Expertise Section */}
-     
+
         </div>
       </section> { /* End About Section */ }
       

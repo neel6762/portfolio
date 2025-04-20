@@ -105,17 +105,6 @@ const Footer = () => {
 
           <div className="text-light/70 text-sm flex flex-col items-center md:items-end">
             <div>{`© ${currentYear} ${siteText.general.siteName}. All rights reserved.`}</div>
-            <div className="mt-1 text-xs flex items-center">
-              {siteText.footer.tagline}
-              <a 
-                href={siteText.footer.cursorLink}
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="ml-1 text-primary hover:text-primary/80 transition-colors duration-300 font-medium"
-              >
-                Cursor AI
-              </a>
-            </div>
           </div>
         </div>
       </div>
