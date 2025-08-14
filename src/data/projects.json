@@ -5,6 +5,19 @@
     "description": "A Streamlit application that analyzes resumes using LLMs and provides job suggestions based on the resume.",
     "tags": ["Streamlit", "LLMs", "Python"],
     "githubLink": "https://github.com/"
-  }
-  
+  },
+  {
+    "id": "2",
+    "title": "AI - Video Generator",
+    "description": "Python application that generates videos using local LLMs",
+    "tags": ["Python", "LLMs", "Video Generation"],
+    "githubLink": "https://github.com/neel6762/AI_Video_Generator"
+  },
+  {
+    "id": "3",
+    "title": "RAG from Scratch",
+    "description": "Exploring the inner workings of RAG pipeline by building one from scratch",
+    "tags": ["Python", "LLMs", "RAG"],
+    "githubLink": "https://github.com/neel6762/RAG_from_Scratch"
+  } 
 ]
