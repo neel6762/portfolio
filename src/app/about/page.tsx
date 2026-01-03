@@ -33,15 +33,15 @@ export default function AboutPage() {
   return (
     <>
       <LiquidBackground />
-      <div className="relative flex-1 min-h-0 flex flex-col px-4 py-20 md:py-24">
-        <div className="w-full max-w-6xl mx-auto flex-1 flex flex-col">
+      <div className="relative flex-1 min-h-0 flex flex-col px-4 pt-24 pb-20 md:px-6 md:pt-28 md:pb-24 lg:px-8">
+        <div className="w-full max-w-5xl mx-auto flex-1 flex flex-col gap-12">
           {/* Page Title */}
-          <h1 className="text-4xl md:text-5xl font-heading font-bold text-white text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-heading font-bold text-white text-center">
             {siteText.about.heading}
           </h1>
 
           {/* Content Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Profile Card - 1/3 width on desktop */}
             <div className="md:col-span-1">
               <ProfileCard />
@@ -54,7 +54,7 @@ export default function AboutPage() {
           </div>
 
           {/* Skills Carousel - Full width */}
-          <div className="mt-auto">
+          <div>
             <SkillsCarousel skills={skillsData} />
           </div>
         </div>
