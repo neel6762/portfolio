@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import ProfileCard from '@/components/about/ProfileCard';
 import AboutText from '@/components/about/AboutText';
 import SkillsCarousel from '@/components/about/SkillsCarousel';
@@ -9,6 +9,27 @@ import siteText from '@/data/siteText.json';
 import skillsData from '@/data/skills.json';
 
 export default function AboutPage() {
+  useEffect(() => {
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+    const prevBodyOverflow = document.body.style.overflow;
+    const main = document.querySelector('main');
+    const prevMainOverflow = main ? main.style.overflow : '';
+
+    document.documentElement.style.overflow = 'auto';
+    document.body.style.overflow = 'auto';
+    if (main) {
+      main.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.documentElement.style.overflow = prevHtmlOverflow;
+      document.body.style.overflow = prevBodyOverflow;
+      if (main) {
+        main.style.overflow = prevMainOverflow;
+      }
+    };
+  }, []);
+
   return (
     <>
       <LiquidBackground />
