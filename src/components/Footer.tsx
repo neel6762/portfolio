@@ -79,32 +79,40 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="py-10 bg-dark-card text-light/80 border-t border-dark-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-          <div className="flex items-center space-x-3">
-            <span className="font-heading text-xl font-bold text-light">{siteText.general.siteName}</span>
-          </div>
+    <footer className="mt-10 pb-6">
+      <div className="px-4 md:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="glass-nav rounded-full shadow-liquid">
+            <div className="min-h-14 md:min-h-16 px-4 md:px-8 py-4 md:py-0 font-body text-white/70 flex items-center">
+              <div className="flex w-full flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                <div className="flex items-center space-x-3">
+                  <span className="font-heading text-xl font-bold text-white">
+                    {siteText.general.siteName}
+                  </span>
+                </div>
 
-          <div className="flex space-x-6">
-            {socialLinks.map((social) => (
-              <motion.a
-                key={social.name}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-light/70 hover:text-primary transition-colors duration-300"
-                whileHover={{ scale: 1.1, y: -4 }}
-                whileTap={{ scale: 0.9 }}
-                aria-label={social.name}
-              >
-                {social.icon}
-              </motion.a>
-            ))}
-          </div>
+              <div className="flex space-x-6">
+                {socialLinks.map((social) => (
+                  <motion.a
+                    key={social.name}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white/70 hover:text-white transition-colors duration-300"
+                    whileHover={{ scale: 1.1, y: -4 }}
+                    whileTap={{ scale: 0.9 }}
+                    aria-label={social.name}
+                  >
+                    {social.icon}
+                  </motion.a>
+                ))}
+              </div>
 
-          <div className="text-light/70 text-sm flex flex-col items-center md:items-end">
-            <div>{`© ${currentYear} ${siteText.general.siteName}. All rights reserved.`}</div>
+                <div className="text-white/60 text-sm flex flex-col items-center md:items-end">
+                  <div>{`© ${currentYear} ${siteText.general.siteName}. All rights reserved.`}</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
