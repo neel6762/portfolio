@@ -27,13 +27,14 @@ export default function SkillsCarousel({ skills }: SkillsCarouselProps) {
       initial="hidden"
       animate="show"
       transition={{ delay: 0.4 }}
-      className="mt-8"
     >
-      <h3 className="text-2xl font-heading font-bold text-white mb-6 text-center">Skills</h3>
+      <h3 className="text-xl md:text-2xl font-heading font-bold text-white/90 mb-6 text-center">
+        Skills
+      </h3>
       <Carousel showDots={slideGroups.length > 1}>
         {slideGroups.map((group, groupIndex) => (
           <div key={groupIndex} className="w-full px-2">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
               {group.map((skill) => {
                 const { IconComponent, colorClass } = getIconComponent(skill.icon);
                 return (

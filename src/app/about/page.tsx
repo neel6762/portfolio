@@ -48,7 +48,7 @@ export default function AboutPage() {
             </div>
 
             {/* About Text - 2/3 width on desktop */}
-            <div className="md:col-span-2 flex items-center">
+            <div className="md:col-span-2 flex items-center pt-2 md:pt-4">
               <AboutText text={siteText.about.description} />
             </div>
           </div>
