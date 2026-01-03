@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ProjectCard from '@/components/projects/ProjectCard';
 import LiquidBackground from '@/components/shared/LiquidBackground';
@@ -9,6 +9,27 @@ import siteText from '@/data/siteText.json';
 import projectsData from '@/data/projects.json';
 
 export default function ProjectsPage() {
+  useEffect(() => {
+    const prevHtmlOverflow = document.documentElement.style.overflow;
+    const prevBodyOverflow = document.body.style.overflow;
+    const main = document.querySelector('main');
+    const prevMainOverflow = main ? main.style.overflow : '';
+
+    document.documentElement.style.overflow = 'auto';
+    document.body.style.overflow = 'auto';
+    if (main) {
+      main.style.overflow = 'auto';
+    }
+
+    return () => {
+      document.documentElement.style.overflow = prevHtmlOverflow;
+      document.body.style.overflow = prevBodyOverflow;
+      if (main) {
+        main.style.overflow = prevMainOverflow;
+      }
+    };
+  }, []);
+
   return (
     <>
       <LiquidBackground />
