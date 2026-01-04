@@ -20,7 +20,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       <GlassCard className="overflow-hidden h-full flex flex-col" hover>
         {/* Project Image */}
         {project.image ? (
-          <div className="relative h-48 overflow-hidden">
+          <div className="relative h-40 overflow-hidden">
             <Image
               src={project.image}
               alt={project.title}
@@ -41,7 +41,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </div>
         ) : (
           // Gradient fallback
-          <div className="h-48 bg-gradient-to-br from-purple-500/20 via-blue-500/20 to-teal-500/20">
+          <div className="h-40 bg-gradient-to-br from-purple-500/20 via-blue-500/20 to-teal-500/20">
             {/* Featured badge for gradient backgrounds */}
             {project.featured && (
               <div className="absolute top-3 right-3 px-3 py-1 bg-yellow-500/20 backdrop-blur-glass-sm border border-yellow-500/30 rounded-full flex items-center gap-1">
@@ -53,14 +53,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         )}
 
         {/* Content Section */}
-        <div className="p-6 flex-1 flex flex-col">
+        <div className="p-5 flex-1 flex flex-col">
           {/* Project Title */}
-          <h3 className="text-xl font-heading font-bold text-white mb-3">
+          <h3 className="text-lg font-heading font-bold text-white mb-2">
             {project.title}
           </h3>
 
           {/* Project Description */}
-          <p className="font-body text-white/70 text-sm leading-relaxed line-clamp-3 mb-4 flex-1">
+          <p className="font-body text-white/70 text-sm leading-relaxed line-clamp-3 mb-3 flex-1">
             {project.description}
           </p>
 

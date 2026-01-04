@@ -69,7 +69,7 @@ export default function ProjectsPage() {
   return (
     <>
       <LiquidBackground />
-      <div className="relative flex-1 min-h-0 flex flex-col px-4 py-20 md:py-24">
+      <div className="relative flex-1 min-h-0 flex flex-col px-4 pt-24 pb-20 md:px-6 md:pt-28 md:pb-24 lg:px-8">
         <div className="w-full max-w-7xl mx-auto flex-1 flex flex-col">
           {/* Page Title */}
           <motion.div
@@ -108,7 +108,7 @@ export default function ProjectsPage() {
               initial="hidden"
               animate="show"
               exit={{ opacity: 0 }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 flex-1"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 flex-1"
             >
               {filteredProjects.length > 0 ? (
                 filteredProjects.map((project) => (
