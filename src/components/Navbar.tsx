@@ -1,80 +1,34 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import siteText from '@/data/siteText.json';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['home', 'about', 'projects'];
-      let currentSection = 'home';
-      const offset = 100; // Offset from top to trigger active state
-
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          if (rect.top <= offset && rect.bottom >= offset) {
-            currentSection = section;
-            break;
-          }
-        }
-      }
-      // Check if scrolled near the bottom of the page
-      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
-         currentSection = sections[sections.length - 1]; // Set to last section
-      }
-
-      setActiveSection(currentSection);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      window.scrollTo({
-        top: section.offsetTop - 80,
-        behavior: 'smooth',
-      });
-    }
-    if (isMobileMenuOpen) {
-      setIsMobileMenuOpen(false);
-    }
-  };
+  const pathname = usePathname();
 
   const navLinks = [
-    { name: 'Home', id: 'home' },
-    { name: 'About Me', id: 'about' },
-    { name: 'Projects', id: 'projects' },
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Projects', href: '/projects' },
   ];
 
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
+  };
+
   return (
-    <nav
-      className="fixed w-full z-50 transition-all duration-300 bg-transparent py-5"
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          {/* Left side placeholder if needed, currently empty */}
-          <motion.div
-             initial={{ opacity: 0, x: -20 }}
-             animate={{ opacity: 1, x: 0 }}
-             transition={{ duration: 0.5 }}
-             className="w-1/3" // Add width to balance flex
-           >
-             {/* Content removed, kept div for layout balance */}
-          </motion.div>
+    <nav className="fixed top-0 left-0 right-0 z-50 px-4 pt-4 md:px-6 md:pt-6 lg:px-8">
+      <div className="max-w-5xl mx-auto">
+        <div className="glass-nav rounded-full shadow-liquid px-4 md:px-8 h-14 md:h-16 flex items-center justify-between">
+          {/* Left side placeholder for balance */}
+          <div className="w-1/3" />
 
           {/* Desktop Navigation (Centered) */}
-          <div className="hidden md:flex items-center justify-center space-x-8 w-1/3"> {/* Centered */}
+          <div className="hidden md:flex items-center justify-center space-x-8 w-1/3">
             {navLinks.map((link, index) => (
               <motion.div
                 key={link.name}
@@ -82,29 +36,31 @@ const Navbar = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <button
-                  onClick={() => scrollToSection(link.id)}
-                  // Use text-light/70 for inactive, text-primary (silver) for active
-                  className={`font-subheading text-lg transition-colors duration-300 relative group ${
-                    activeSection === link.id ? 'text-primary font-medium' : 'text-light/70 hover:text-light'
+                <Link
+                  href={link.href}
+                  className={`font-body text-base transition-colors duration-300 relative group ${
+                    isActive(link.href)
+                      ? 'text-white font-medium'
+                      : 'text-white/70 hover:text-white'
                   }`}
+                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {link.name}
-                  {/* Underline uses primary (silver) */}
-                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
-                    activeSection === link.id ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}></span>
-                </button>
+                  <span
+                    className={`absolute -bottom-1 left-0 h-0.5 bg-white transition-all duration-300 ${
+                      isActive(link.href) ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}
+                  />
+                </Link>
               </motion.div>
             ))}
           </div>
 
           {/* Mobile Menu Button (Right Aligned) */}
-          <div className="md:hidden flex items-center justify-end w-1/3"> {/* Ensure right alignment */}
+          <div className="md:hidden flex items-center justify-end w-1/3">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              // Use text-light/70, hover uses primary (silver)
-              className="text-light/70 focus:outline-none hover:text-primary transition-colors duration-300"
+              className="text-white/70 focus:outline-none hover:text-white transition-colors duration-300"
               aria-label="Toggle menu"
             >
               <svg
@@ -141,34 +97,40 @@ const Navbar = () => {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
-          // Use dark-card bg, backdrop blur
-          className="md:hidden bg-dark-card/95 backdrop-blur-md shadow-lg"
+          className="md:hidden mt-3 px-4 md:px-6 lg:px-8"
         >
-          <div className="px-6 py-6 space-y-5">
-            {navLinks.map((link, index) => (
-              <motion.div
-                key={link.name}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <button
-                  onClick={() => scrollToSection(link.id)}
-                   // Use text-light/80 for inactive, text-primary (silver) for active
-                  className={`block font-subheading text-xl transition-colors duration-300 w-full text-left ${
-                    activeSection === link.id ? 'text-primary font-medium' : 'text-light/80 hover:text-light'
-                  }`}
-                >
-                  <span className="relative">
-                    {link.name}
-                    {/* Underline uses primary (silver) */}
-                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${
-                      activeSection === link.id ? 'w-full' : 'w-0'
-                    }`}></span>
-                  </span>
-                </button>
-              </motion.div>
-            ))}
+          <div className="max-w-5xl mx-auto">
+            <div className="glass-nav rounded-3xl shadow-liquid bg-black/60">
+              <div className="px-6 py-6 space-y-5">
+                {navLinks.map((link, index) => (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 }}
+                  >
+                    <Link
+                      href={link.href}
+                      className={`block font-body text-xl transition-colors duration-300 w-full text-left ${
+                        isActive(link.href)
+                          ? 'text-white font-medium'
+                          : 'text-white/80 hover:text-white'
+                      }`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      <span className="relative">
+                        {link.name}
+                        <span
+                          className={`absolute -bottom-1 left-0 h-0.5 bg-white transition-all duration-300 ${
+                            isActive(link.href) ? 'w-full' : 'w-0'
+                          }`}
+                        />
+                      </span>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.div>
       )}
@@ -176,4 +138,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar; 
+export default Navbar;

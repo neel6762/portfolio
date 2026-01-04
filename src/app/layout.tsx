@@ -1,40 +1,34 @@
-import '@/styles/globals.css'
-import type { Metadata } from 'next'
-import { Inter, Playfair_Display } from 'next/font/google'
-import { ThemeProvider } from '@/components/ThemeProvider'
+import '@/styles/globals.css';
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
-// Load Inter font (for body text)
-const inter = Inter({ 
+// Load Inter font with multiple weights for SF Pro-like appearance
+const inter = Inter({
   subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
   variable: '--font-inter',
   display: 'swap',
-})
-
-// Load Playfair Display font (for headings)
-const playfairDisplay = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-playfair-display',
-  display: 'swap',
-})
+});
 
 export const metadata: Metadata = {
-  title: 'Neel Patel Portfolio',
-  description: 'A personal portfolio website showcasing my projects and skills',
-}
+  title: 'Neel Patel | Portfolio',
+  description: 'Full-stack developer and AI enthusiast building innovative solutions',
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${playfairDisplay.variable} scroll-smooth dark`}>
-      <body className={`${inter.className} bg-dark text-light transition-colors duration-300`}>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} scroll-smooth dark`}>
+      <body className={`${inter.className} flex flex-col h-full overflow-hidden bg-black text-white antialiased`}>
+        <Navbar />
+        <main className="flex-1 min-h-0 flex flex-col overflow-hidden">{children}</main>
+        {/* <Footer /> */}
       </body>
     </html>
-  )
+  );
 } 
