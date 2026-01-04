@@ -6,8 +6,11 @@ export interface Project {
   description: string;
   tags: string[];
   githubLink?: string;
+  liveLink?: string;
+  image?: string;
   featured?: boolean;
   category?: 'web' | 'ai' | 'data' | 'other';
+  date?: string;
 }
 
 export interface Skill {

@@ -4,20 +4,35 @@
     "title": "LLM-Powered Resume Analyzer",
     "description": "A Streamlit application that analyzes resumes using LLMs and provides job suggestions based on the resume.",
     "tags": ["Streamlit", "LLMs", "Python"],
-    "githubLink": "https://github.com/"
+    "githubLink": "https://github.com/",
+    "liveLink": "",
+    "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800",
+    "featured": true,
+    "category": "ai",
+    "date": "2024-11-15"
   },
   {
     "id": "2",
     "title": "AI - Video Generator",
     "description": "Python application that generates videos using local LLMs",
     "tags": ["Python", "LLMs", "Video Generation"],
-    "githubLink": "https://github.com/neel6762/AI_Video_Generator"
+    "githubLink": "https://github.com/neel6762/AI_Video_Generator",
+    "liveLink": "",
+    "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800",
+    "featured": false,
+    "category": "ai",
+    "date": "2024-09-20"
   },
   {
     "id": "3",
     "title": "RAG from Scratch",
     "description": "Exploring the inner workings of RAG pipeline by building one from scratch",
     "tags": ["Python", "LLMs", "RAG"],
-    "githubLink": "https://github.com/neel6762/RAG_from_Scratch"
-  } 
+    "githubLink": "https://github.com/neel6762/RAG_from_Scratch",
+    "liveLink": "",
+    "image": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800",
+    "featured": true,
+    "category": "ai",
+    "date": "2024-10-05"
+  }
 ]
