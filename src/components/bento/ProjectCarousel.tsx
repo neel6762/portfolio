@@ -97,12 +97,12 @@ export default function ProjectCarousel({ projects, className = '' }: ProjectCar
               className="flex flex-col h-full"
             >
               {/* Project Title */}
-              <h3 className="text-xl md:text-2xl font-heading font-bold text-forest-cream mb-3">
+              <h3 className="text-xl md:text-2xl font-heading font-bold text-forest-cream mb-3 pt-2">
                 {currentProject.title}
               </h3>
 
               {/* Project Description */}
-              <p className="font-body text-forest-eucalyptus text-sm md:text-base leading-relaxed line-clamp-4 mb-4 flex-1">
+              <p className="font-body text-forest-eucalyptus text-sm md:text-base leading-relaxed line-clamp-4 mb-3">
                 {currentProject.description}
               </p>
 
