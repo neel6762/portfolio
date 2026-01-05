@@ -81,7 +81,7 @@ export default function BentoGrid({
           jobTitle={jobTitle}
           bio={bio}
           socialLinks={socialLinks}
-          className="col-span-2 md:col-span-2 row-span-2 md:row-span-1 md:min-h-[250px]"
+          className="col-span-2 md:col-span-2 row-span-1 md:min-h-[250px]"
         />
 
         {/* Project Carousel - BOTTOM RIGHT (hero element) */}
