@@ -62,7 +62,7 @@ export default function AboutCard({ className = '', jobTitle, bio, socialLinks =
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.5 + index * 0.1, duration: 0.3 }}
-                className="w-10 h-10 flex items-center justify-center bg-forest-olive/20 hover:bg-forest-accent/40 border border-forest-olive/30 hover:border-forest-sage/50 rounded-full text-forest-sage hover:text-forest-cream transition-all duration-300 hover:scale-110"
+                className="w-10 h-10 flex items-center justify-center bg-forest-olive/20 hover:bg-forest-accent/40 border border-forest-olive/30 hover:border-forest-sage/50 rounded-full text-white hover:text-white transition-all duration-300 hover:scale-110"
               >
                 {link.icon}
               </motion.a>
