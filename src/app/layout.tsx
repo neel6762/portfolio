@@ -1,8 +1,6 @@
 import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 
 // Load Inter font with multiple weights for SF Pro-like appearance
 const inter = Inter({
@@ -24,10 +22,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${inter.variable} scroll-smooth dark`}>
-      <body className={`${inter.className} flex flex-col h-full overflow-hidden bg-black text-white antialiased`}>
-        <Navbar />
+      <body className={`${inter.className} flex flex-col h-full overflow-hidden bg-forest-cream text-forest-deep antialiased`}>
         <main className="flex-1 min-h-0 flex flex-col overflow-hidden">{children}</main>
-        {/* <Footer /> */}
       </body>
     </html>
   );

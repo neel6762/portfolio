@@ -1,12 +1,14 @@
 'use client';
 
 import React from 'react';
-import HeroSection from '@/components/home/HeroSection';
-import SocialLinks from '@/components/home/SocialLinks';
+import BentoGrid from '@/components/bento/BentoGrid';
 import LiquidBackground from '@/components/shared/LiquidBackground';
 import siteText from '@/data/siteText.json';
+import projects from '@/data/projects.json';
+import skills from '@/data/skills.json';
 
 export default function Home() {
+  // Social links with icons
   const socialLinks = [
     {
       name: 'GitHub',
@@ -78,15 +80,15 @@ export default function Home() {
   return (
     <>
       <LiquidBackground />
-      <div className="relative flex-1 min-h-0 h-full px-4 flex items-center justify-center">
-        <div className="w-full max-w-5xl mx-auto flex flex-col items-center justify-center text-center space-y-16">
-          <HeroSection
-            name={siteText.general.siteName}
-            jobTitle={siteText.general.jobTitle}
-            showPhoto={false}
-          />
-          <SocialLinks links={socialLinks} />
-        </div>
+      <div className="relative flex-1 h-full overflow-hidden">
+        <BentoGrid
+          name={siteText.general.siteName}
+          jobTitle={siteText.general.jobTitle}
+          bio={siteText.about.description}
+          socialLinks={socialLinks}
+          projects={projects}
+          skills={skills}
+        />
       </div>
     </>
   );

@@ -10,7 +10,7 @@ export default function ProfileCard() {
       <div className="flex justify-center">
         <div className="relative w-full aspect-square max-w-xs rounded-full overflow-hidden ring-2 ring-white/20">
           <Image
-            src="/images/profile.jpg"
+            src="public/images/profile.jpg"
             alt="Profile"
             fill
             className="object-cover"
