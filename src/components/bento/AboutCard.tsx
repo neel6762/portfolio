@@ -21,7 +21,7 @@ interface AboutCardProps {
 export default function AboutCard({ className = '', jobTitle, bio, socialLinks = [] }: AboutCardProps) {
   return (
     <BentoCard className={className}>
-      <div className="h-full flex flex-col justify-between p-8 md:p-10">
+      <div className="h-full flex flex-col justify-between p-6 md:p-10">
         <div>
           {/* Job Title */}
           <motion.h2
