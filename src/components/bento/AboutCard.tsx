@@ -38,7 +38,7 @@ export default function AboutCard({ className = '', jobTitle, bio, socialLinks =
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="font-body text-forest-eucalyptus text-sm md:text-base leading-relaxed line-clamp-3"
+            className="font-body text-forest-eucalyptus text-sm md:text-base leading-relaxed md:line-clamp-3"
           >
             {bio}
           </motion.p>

@@ -69,7 +69,7 @@ export default function ProjectCarousel({ projects, className = '' }: ProjectCar
                 </h3>
 
                 {/* Project Description */}
-                <p className="font-body text-forest-eucalyptus text-sm md:text-base leading-relaxed line-clamp-3 mb-3">
+                <p className="font-body text-forest-eucalyptus text-sm md:text-base leading-relaxed line-clamp-4 md:line-clamp-3 mb-3">
                   {project.description}
                 </p>
 
