@@ -9,35 +9,28 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // B&W Palette Inspired Names
-        'jet-black': '#121212',
-        'charcoal': '#2C2C2C',
-        'gunmetal': '#484848',
-        'smoke': '#999999',
-        'ash-gray': '#B2B2B2',
-        'silver': '#C0C0C0',
-        'light-gray': '#E0E0E0',
-        'off-white': '#FAFAFA',
+        // Refined Forest Green Palette (lighter, more premium)
+        'forest-deep': '#1A3A2E',      // Lighter deep forest green
+        'forest-olive': '#4A6F59',      // Brighter earthy olive green
+        'forest-sage': '#7FA990',       // Lighter muted sage green
+        'forest-eucalyptus': '#B8D4C8', // Softer, more premium eucalyptus
+        'forest-cream': '#E8F3EC',      // Cleaner cream-green (background)
+        'forest-accent': '#5D8A73',     // Mid-tone for hover states
 
-        // Semantic Mapping
-        primary: 'var(--color-silver)',
-        secondary: 'var(--color-smoke)',
-        accent: 'var(--color-silver)',
+        // Semantic Mapping (updated to refined colors)
+        primary: '#7FA990',             // forest-sage (refined)
+        secondary: '#4A6F59',           // forest-olive (refined)
+        accent: '#B8D4C8',              // forest-eucalyptus (refined)
 
-        light: 'var(--color-off-white)',
-        dark: 'var(--color-charcoal)',
+        light: '#E8F3EC',               // forest-cream (refined)
+        dark: '#1A3A2E',                // forest-deep (refined)
 
-        'dark-text': 'var(--color-off-white)',
-        'dark-card': 'var(--color-jet-black)',
-        'dark-border': 'var(--color-gunmetal)',
+        'dark-text': '#E8F3EC',         // Light text on dark bg (refined)
+        'dark-card': '#1A3A2E',         // Card background (refined)
+        'dark-border': '#4A6F59',       // Border color (refined)
 
-        'text-muted': 'var(--color-smoke)',
-        'placeholder-color': 'var(--color-ash-gray)',
-
-        // iOS 26 Liquid Glass Colors
-        'glass-white': 'rgba(255, 255, 255, 0.1)',
-        'glass-black': 'rgba(0, 0, 0, 0.3)',
-        'glass-border': 'rgba(255, 255, 255, 0.2)',
+        'text-muted': '#B8D4C8',        // Muted text (refined)
+        'placeholder-color': '#7FA990', // Placeholder text (refined)
       },
       fontFamily: {
         heading: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'var(--font-inter)', 'system-ui', 'sans-serif'],
@@ -53,7 +46,7 @@ module.exports = {
       borderRadius: {
         'glass': '20px',
         'glass-lg': '28px',
-        'glass-xl': '36px',
+        'glass-xl': '16px',
       },
       animation: {
         'bounce-slow': 'bounce 3s infinite',
