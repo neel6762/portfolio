@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
@@ -22,18 +22,6 @@ interface ProjectCarouselProps {
 
 export default function ProjectCarousel({ projects, className = '' }: ProjectCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-
-  // Auto-rotation logic with cleanup
-  useEffect(() => {
-    if (isPaused || projects.length <= 1) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % projects.length);
-    }, 5500); // 5.5 seconds
-
-    return () => clearInterval(interval);
-  }, [isPaused, projects.length]);
 
   // Navigation handler for dots
   const handleDotClick = (index: number) => {
@@ -41,11 +29,7 @@ export default function ProjectCarousel({ projects, className = '' }: ProjectCar
   };
 
   return (
-    <div
-      className={`carousel-card relative overflow-hidden ${className}`}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
-    >
+    <div className={`carousel-card relative overflow-hidden ${className}`}>
       <div className="h-full flex flex-col justify-between p-8 md:p-10">
         {/* Top Section: Static "Projects" Header - Matching AboutCard style */}
         <motion.h2
@@ -89,22 +73,9 @@ export default function ProjectCarousel({ projects, className = '' }: ProjectCar
                   {project.description}
                 </p>
 
-                {/* Tags - Minimal Chips */}
-                {project.tags && project.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.slice(0, 3).map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2.5 py-1 bg-forest-olive/15 border border-forest-olive/25 rounded-full text-xs font-body text-forest-eucalyptus"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                {/* Links - Icon Only Style (matching social icons) */}
-                <div className="flex gap-3">
+                {/* Tags and Links - Inline */}
+                <div className="flex flex-wrap items-center gap-2">
+                  {/* Links - Icon Only Style (matching social icons) */}
                   {project.githubLink && (
                     <a
                       href={project.githubLink}
@@ -137,6 +108,20 @@ export default function ProjectCarousel({ projects, className = '' }: ProjectCar
                     >
                       <FaExternalLinkAlt className="w-4 h-4" />
                     </a>
+                  )}
+
+                  {/* Tags - Minimal Chips */}
+                  {project.tags && project.tags.length > 0 && (
+                    <>
+                      {project.tags.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2.5 py-1 bg-forest-olive/15 border border-forest-olive/25 rounded-full text-xs font-body text-forest-eucalyptus"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </>
                   )}
                 </div>
               </motion.div>
