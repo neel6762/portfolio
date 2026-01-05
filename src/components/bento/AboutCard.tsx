@@ -21,7 +21,7 @@ interface AboutCardProps {
 export default function AboutCard({ className = '', jobTitle, bio, socialLinks = [] }: AboutCardProps) {
   return (
     <BentoCard className={className}>
-      <div className="h-full flex flex-col justify-between p-8 md:p-10">
+      <div className="h-full flex flex-col md:justify-between p-6 md:p-10">
         <div>
           {/* Job Title */}
           <motion.h2
@@ -38,7 +38,7 @@ export default function AboutCard({ className = '', jobTitle, bio, socialLinks =
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
-            className="font-body text-forest-eucalyptus text-sm md:text-base leading-relaxed line-clamp-3"
+            className="font-body text-forest-eucalyptus text-sm md:text-base leading-relaxed md:line-clamp-3"
           >
             {bio}
           </motion.p>
@@ -50,7 +50,7 @@ export default function AboutCard({ className = '', jobTitle, bio, socialLinks =
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="flex gap-3 mt-4"
+            className="flex gap-3 mt-5"
           >
             {socialLinks.map((link, index) => (
               <motion.a

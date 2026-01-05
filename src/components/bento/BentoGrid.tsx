@@ -66,14 +66,14 @@ export default function BentoGrid({
       variants={containerVariants}
       initial="hidden"
       animate="show"
-      className="w-full h-full max-w-7xl mx-auto px-4 py-4 flex items-center justify-center"
+      className="w-full h-full max-w-7xl mx-auto px-4 py-4 md:flex md:items-center md:justify-center"
     >
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 h-[calc(100vh-2rem)]" style={{ gridAutoRows: '1fr' }}>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 md:h-[calc(100vh-2rem)]" style={{ gridAutoRows: '1fr' }}>
         {/* Photo Card - LEFT SIDE (tall) */}
         <PhotoCard
           name={name}
           photoUrl={photoUrl}
-          className="col-span-2 row-span-2 md:col-span-2 md:row-span-3"
+          className="col-span-2 row-span-2 md:col-span-2 md:row-span-3 min-h-[300px]"
         />
 
         {/* About Card - TOP RIGHT */}
@@ -81,13 +81,13 @@ export default function BentoGrid({
           jobTitle={jobTitle}
           bio={bio}
           socialLinks={socialLinks}
-          className="col-span-2 md:col-span-2 row-span-2 md:row-span-1"
+          className="col-span-2 md:col-span-2 row-span-1 md:min-h-[250px]"
         />
 
         {/* Project Carousel - BOTTOM RIGHT (hero element) */}
         <ProjectCarousel
           projects={projects}
-          className="col-span-2 md:col-span-2 row-span-2"
+          className="col-span-2 md:col-span-2 row-span-2 min-h-[350px]"
         />
 
         {/* Skills Card - BOTTOM, FULL WIDTH */}

@@ -80,7 +80,7 @@ export default function Home() {
   return (
     <>
       <LiquidBackground />
-      <div className="relative flex-1 h-full overflow-hidden">
+      <div className="relative flex-1 h-full overflow-y-auto md:overflow-hidden">
         <BentoGrid
           name={siteText.general.siteName}
           jobTitle={siteText.general.jobTitle}
