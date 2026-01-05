@@ -52,7 +52,7 @@ export default function ProjectCarousel({ projects, className = '' }: ProjectCar
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="text-3xl md:text-4xl font-heading font-bold text-forest-cream mb-4"
+          className="text-3xl md:text-4xl font-heading font-bold text-forest-cream mb-6"
         >
           Projects
         </motion.h2>
