@@ -101,9 +101,6 @@ body {
   }
 
   .bento-card:hover {
-    @apply -translate-y-1;
-    background: rgba(26, 58, 46, 0.75); /* Slight opacity increase */
-    border-color: rgba(127, 169, 144, 0.4); /* More visible sage border */
     box-shadow:
       0 8px 24px rgba(26, 58, 46, 0.2),
       0 2px 4px rgba(255, 255, 255, 0.08) inset;

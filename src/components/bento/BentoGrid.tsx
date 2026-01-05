@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import PhotoCard from './PhotoCard';
 import AboutCard from './AboutCard';
 import ProjectCarousel from './ProjectCarousel';
-import SkillsCard from './SkillsCard';
+// import SkillsCard from './SkillsCard';
 
 interface SocialLink {
   name: string;
@@ -91,10 +91,10 @@ export default function BentoGrid({
         />
 
         {/* Skills Card - BOTTOM, FULL WIDTH */}
-        <SkillsCard
+        {/* <SkillsCard
           skills={skills}
           className="col-span-2 md:col-span-4 row-span-1"
-        />
+        /> */}
       </div>
     </motion.div>
   );
